@@ -40,7 +40,7 @@ class Sidebar extends Component {
 
           </a>
           <a href='https://www.creative-tim.com' className='simple-text logo-normal'>
-                            Creative Tim
+                            Fantasy Coin
           </a>
         </div>
         <div className='sidebar-wrapper'>

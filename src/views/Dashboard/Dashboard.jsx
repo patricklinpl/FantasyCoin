@@ -19,8 +19,6 @@ import {
 } from 'variables/Variables.jsx'
 import axios from 'axios'
 
-import helpers from '../../utils/api.js'
-
 class Dashboard extends Component {
   constructor (props) {
     super(props)
@@ -60,19 +58,19 @@ class Dashboard extends Component {
           <Row>
             <Col lg={3} sm={6}>
               <StatsCard
-                bigIcon={<i className='pe-7s-server text-warning' />}
+                bigIcon={<i className='pe-7s-wallet text-success' />}
                 statsText={this.state.coin.symbol}
-                statsValue='105GB'
-                statsIcon={<i className='fa fa-refresh' />}
-                statsIconText='Updated now'
+                statsValue={this.state.coin.percent_change_24h + '%'}
+                statsIcon={<i className='fa fa-calendar-o' />}
+                statsIconText='Top Coin'
               />
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
-                bigIcon={<i className='pe-7s-wallet text-success' />}
+                bigIcon={<i className='pe-7s-server text-warning' />}
                 statsText='Revenue'
                 statsValue='$1,345'
-                statsIcon={<i className='fa fa-calendar-o' />}
+                statsIcon={<i className='fa fa-refresh' />}
                 statsIconText='Last day'
               />
             </Col>
@@ -100,7 +98,7 @@ class Dashboard extends Component {
               <Card
                 statsIcon='fa fa-history'
                 id='chartHours'
-                title='Users Behavior'
+                title='Portfolio Performance'
                 category='24 Hours performance'
                 stats='Updated 3 minutes ago'
                 content={

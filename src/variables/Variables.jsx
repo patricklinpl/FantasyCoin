@@ -520,7 +520,7 @@ var responsiveSales = [
   }]
 ]
 var legendSales = {
-  names: ['Open', 'Click', 'Click Second Time'],
+  names: ['User1', 'User2', 'User3'],
   types: ['info', 'danger', 'warning']
 }
 

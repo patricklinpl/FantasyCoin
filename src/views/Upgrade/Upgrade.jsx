@@ -4,8 +4,28 @@ import { Table, Grid, Row, Col } from 'react-bootstrap'
 import Card from 'components/Card/Card'
 
 import Button from 'elements/CustomButton/CustomButton'
+import axios from 'axios'
 
 class Icons extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      coin: []
+    }
+  }
+
+  componentDidMount () {
+    axios.get(`http://api.coinmarketcap.com/v1/ticker`)
+      .then(res => {
+        var coin = []
+        for (var i = 0; i < 30; i++) {
+          coin.push(res.data[i].symbol)
+        }
+        this.setState({ coin[0] })
+      })
+  }
+
   render () {
     return (
       <div className='content'>
@@ -14,8 +34,8 @@ class Icons extends Component {
             <Col md={8} mdOffset={2}>
               <Card
                 hCenter
-                title='Light Bootstrap Dashboard PRO React'
-                category='Are you looking for more components? Please check our Premium Version of Light Bootstrap Dashboard React.'
+                title='Pick your coins here'
+                category='Please select up to 10 coins to list on your portfolio'
                 ctTableResponsive ctTableFullWidth ctTableUpgrade
                 content={
                   <Table>
@@ -26,7 +46,7 @@ class Icons extends Component {
                       </tr></thead>
                     <tbody>
                       <tr>
-                        <td>Components</td>
+                        <td>{this.state.coin.symbol}</td>
                         <td>30</td>
                         <td>60</td>
                       </tr>
@@ -71,7 +91,7 @@ class Icons extends Component {
                           <Button href='#' round fill disabled bsStyle='default'>Current Version</Button>
                         </td>
                         <td>
-                          <Button target='_blank' href='http://www.creative-tim.com/product/light-bootstrap-dashboard-pro-react/?ref=lbd-react-free' round fill bsStyle='info'>Upgrade to PRO</Button>
+                          <Button target='_blank' href='http://www.creative-tim.com/product/light-bootstrap-dashboard-pro-react/?ref=lbd-react-free' round fill bsStyle='info'>Start New League</Button>
                         </td>
                       </tr>
                     </tbody>
