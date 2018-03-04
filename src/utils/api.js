@@ -7,21 +7,29 @@ const BASE_URL = 'http://api.coinmarketcap.com/v1'
 *
 * @returns {Array}
 */
-async function getAllCoinTickers () {
-  console.log('test')
-  try {
-    const tickers = []
-    const response = await axios.get(BASE_URL + '/ticker')
-    for (var i in response) {
-      tickers.push(response[i].symbol)
-      console.log('test')
-      return tickers
-    }
-  } catch (error) {
-    console.log(error)
-  }
+
+// function getBTC () {
+//   return axios.get(BASE_URL + '/ticker')
+// }
+
+function getAllCoinTickers () {
+  axios.get(BASE_URL + '/ticker')
+    .then(res => {
+      const coin = res.data[0]
+      return coin
+    })
 }
 
+const helpers = getAllCoinTickers()
+
+// const getAllCoinTickers = () => (
+//   axios.get(BASE_URL + '/ticker')
+//     .then(response => {
+//       console.log(response.data[0])
+//       return response.data[0]
+//     })
+// )
+
 // async function getCoinPrice () {
 
 // }
@@ -30,4 +38,4 @@ async function getAllCoinTickers () {
 
 // }
 
-export {getAllCoinTickers}
+export default helpers

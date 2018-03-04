@@ -17,10 +17,19 @@ import {
   responsiveBar,
   legendBar
 } from 'variables/Variables.jsx'
+import axios from 'axios'
 
-import {getAllCoinTickers} from '../../utils/api'
+import helpers from '../../utils/api.js'
 
 class Dashboard extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      coin: []
+    }
+  }
+
   createLegend (json) {
     var legend = []
     for (var i = 0; i < json['names'].length; i++) {
@@ -35,6 +44,15 @@ class Dashboard extends Component {
     }
     return legend
   }
+
+  componentDidMount () {
+    axios.get(`http://api.coinmarketcap.com/v1/ticker`)
+      .then(res => {
+        const coin = res.data[0]
+        this.setState({ coin })
+      })
+  }
+
   render () {
     return (
       <div className='content'>
@@ -43,7 +61,7 @@ class Dashboard extends Component {
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className='pe-7s-server text-warning' />}
-                statsText={getAllCoinTickers()[0]}
+                statsText={this.state.coin.symbol}
                 statsValue='105GB'
                 statsIcon={<i className='fa fa-refresh' />}
                 statsIconText='Updated now'
