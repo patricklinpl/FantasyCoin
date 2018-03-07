@@ -78,8 +78,8 @@ class Dashboard extends Component {
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
-                bigIcon={<i className='pe-7s-graph1 text-danger' />}
-                statsText='Errors'
+                bigIcon={<i className='pe-7s-medal text-success' />}
+                statsText='Wins'
                 statsValue='23'
                 statsIcon={<i className='fa fa-clock-o' />}
                 statsIconText='In the last hour'
