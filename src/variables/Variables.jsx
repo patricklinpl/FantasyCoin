@@ -477,12 +477,12 @@ const iconsArray = [
 //
 // Data for Pie Chart
 var dataPie = {
-  labels: ['40%', '20%', '40%'],
-  series: [40, 20, 40]
+  labels: ['21%', '17%', '30%', '22%', '10%'],
+  series: [21, 17, 30, 22, 10]
 }
 var legendPie = {
-  names: ['Open', 'Bounce', 'Unsubscribe'],
-  types: ['info', 'danger', 'warning']
+  names: ['BTC', 'ETH', 'ACT', 'LTC', 'XRP'],
+  types: ['info', 'danger', 'warning', 'success', 'primary']
 }
 
 // Data for Line Chart

@@ -22,7 +22,6 @@ class Icons extends Component {
         for (var i = 0; i < 30; i++) {
           coin.push(res.data[i].symbol)
         }
-        this.setState({ coin[0] })
       })
   }
 

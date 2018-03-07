@@ -5,6 +5,7 @@ import { Grid, Row, Col } from 'react-bootstrap'
 import {Card} from 'components/Card/Card.jsx'
 import {StatsCard} from 'components/StatsCard/StatsCard.jsx'
 import {Tasks} from 'components/Tasks/Tasks.jsx'
+import * as Icon from 'react-cryptocoins'
 import {
   dataPie,
   legendPie,
@@ -67,8 +68,8 @@ class Dashboard extends Component {
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
-                bigIcon={<i className='pe-7s-server text-warning' />}
-                statsText='Revenue'
+                bigIcon={<i className='pe-7s-graph2 text-primary' />}
+                statsText='Overall Performance'
                 statsValue='$1,345'
                 statsIcon={<i className='fa fa-refresh' />}
                 statsIconText='Last day'
@@ -121,9 +122,9 @@ class Dashboard extends Component {
             <Col md={4}>
               <Card
                 statsIcon='fa fa-clock-o'
-                title='Email Statistics'
-                category='Last Campaign Performance'
-                stats='Campaign sent 2 days ago'
+                title='Crypto Currency Statistics'
+                category='Portfolio Profit Performance'
+                stats='Your 1 week performance'
                 content={
                   <div id='chartPreferences' className='ct-chart ct-perfect-fourth'>
                     <ChartistGraph data={dataPie} type='Pie' />
