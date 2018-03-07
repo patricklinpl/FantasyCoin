@@ -88,8 +88,8 @@ class Dashboard extends Component {
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className='fa fa-twitter text-info' />}
-                statsText='Followers'
-                statsValue='+45'
+                statsText='Insert some shit here'
+                statsValue='???'
                 statsIcon={<i className='fa fa-refresh' />}
                 statsIconText='Updated now'
               />
