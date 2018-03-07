@@ -71,7 +71,7 @@ class Dashboard extends Component {
               <StatsCard
                 bigIcon={<i className='pe-7s-graph2 text-primary' />}
                 statsText='Overall Performance'
-                statsValue='$1,345'
+                statsValue='203%'
                 statsIcon={<i className='fa fa-refresh' />}
                 statsIconText='Last day'
               />
