@@ -33,8 +33,8 @@ class Icons extends Component {
             <Col md={8} mdOffset={2}>
               <Card
                 hCenter
-                title='Pick your coins here'
-                category='Please select up to 10 coins to list on your portfolio'
+                title='Pick your team here'
+                category='Please select up to 5 people to compete against'
                 ctTableResponsive ctTableFullWidth ctTableUpgrade
                 content={
                   <Table>

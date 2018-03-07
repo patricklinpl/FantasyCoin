@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import ChartistGraph from 'react-chartist'
-import { Grid, Row, Col } from 'react-bootstrap'
+import { Table, Grid, Row, Col } from 'react-bootstrap'
+import Button from 'elements/CustomButton/CustomButton'
 
 import {Card} from 'components/Card/Card.jsx'
 import {StatsCard} from 'components/StatsCard/StatsCard.jsx'
-import {Tasks} from 'components/Tasks/Tasks.jsx'
+import {News} from 'components/News/News.jsx'
 import * as Icon from 'react-cryptocoins'
 import {
   dataPie,
@@ -96,28 +97,56 @@ class Dashboard extends Component {
           </Row>
           <Row>
             <Col md={8}>
-              <Card
-                statsIcon='fa fa-history'
-                id='chartHours'
-                title='Portfolio Performance'
-                category='24 Hours performance'
-                stats='Updated 3 minutes ago'
-                content={
-                  <div className='ct-chart'>
-                    <ChartistGraph
-                      data={dataSales}
-                      type='Line'
-                      options={optionsSales}
-                      responsiveOptions={responsiveSales}
-                    />
-                  </div>
-                }
-                legend={
-                  <div className='legend'>
-                    {this.createLegend(legendSales)}
-                  </div>
-                }
-              />
+              <div className='content'>
+                <Grid fluid>
+                  <Row>
+                    <Col md={8} mdOffset={2}>
+                      <Card
+                        hCenter
+                        title='Leaderboard'
+                        category='Your Competetion'
+                        ctTableResponsive ctTableFullWidth ctTableUpgrade
+                        content={
+                          <Table>
+                            <thead>
+                              <tr><th />
+                                <th className='text-center'>ROI</th>
+                                <th className='text-center'>Rank</th>
+                              </tr></thead>
+                            <tbody>
+                              <tr>
+                                <td>Jason</td>
+                                <td>Insert ROI</td>
+                                <td>#1</td>
+                              </tr>
+                              <tr>
+                                <td>Max</td>
+                                <td>-99%</td>
+                                <td>#2</td>
+                              </tr>
+                              <tr>
+                                <td>Ze</td>
+                                <td>7%</td>
+                                <td>#3</td>
+                              </tr>
+                              <tr>
+                                <td>Patrick</td>
+                                <td>Godliness</td>
+                                <td>#4</td>
+                              </tr>
+                              <tr>
+                                <td>Michael</td>
+                                <td>Holy SH*T</td>
+                                <td>#1</td>
+                              </tr>
+                            </tbody>
+                          </Table>
+                        }
+                      />
+                    </Col>
+                  </Row>
+                </Grid>
+              </div>
             </Col>
             <Col md={4}>
               <Card
@@ -167,14 +196,14 @@ class Dashboard extends Component {
 
             <Col md={6}>
               <Card
-                title='Tasks'
-                category='Backend development'
+                title='News'
+                category='Your Daily Crypto Currency News'
                 stats='Updated 3 minutes ago'
                 statsIcon='fa fa-history'
                 content={
                   <div className='table-full-width'>
                     <table className='table'>
-                      <Tasks />
+                      <News />
                     </table>
                   </div>
                 }
