@@ -10,10 +10,6 @@ import * as Icon from 'react-cryptocoins'
 import {
   dataPie,
   legendPie,
-  dataSales,
-  optionsSales,
-  responsiveSales,
-  legendSales,
   dataBar,
   optionsBar,
   responsiveBar,

@@ -38,59 +38,31 @@ class Icons extends Component {
                 ctTableResponsive ctTableFullWidth ctTableUpgrade
                 content={
                   <Table>
-                    <thead>
-                      <tr><th />
-                        <th className='text-center'>Free</th>
-                        <th className='text-center'>PRO</th>
-                      </tr></thead>
                     <tbody>
                       <tr>
-                        <td>{this.state.coin.symbol}</td>
-                        <td>30</td>
-                        <td>60</td>
-                      </tr>
-                      <tr>
-                        <td>Plugins</td>
-                        <td>3</td>
-                        <td>13</td>
-                      </tr>
-                      <tr>
-                        <td>Example Pages</td>
-                        <td>7</td>
-                        <td>24</td>
-                      </tr>
-                      <tr>
-                        <td>Documentation</td>
-                        <td><i className='fa fa-check text-success' /></td>
+                        <td>Patrick Lin</td>
                         <td><i className='fa fa-check text-success' /></td>
                       </tr>
                       <tr>
-                        <td>SASS Files</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
-                      <tr>
-                        <td>Login/Register/Lock Pages</td>
-                        <td><i className='fa fa-times text-danger' /></td>
+                        <td>Max Leung</td>
                         <td><i className='fa fa-check text-success' /></td>
                       </tr>
                       <tr>
-                        <td>Premium Support</td>
-                        <td><i className='fa fa-times text-danger' /></td>
+                        <td>Ze Chen</td>
+                        <td><i className='fa fa-check text-success' /></td>
+                      </tr>
+                      <tr>
+                        <td>Michael Sun</td>
+                        <td><i className='fa fa-check text-success' /></td>
+                      </tr>
+                      <tr>
+                        <td>Paul George</td>
                         <td><i className='fa fa-check text-success' /></td>
                       </tr>
                       <tr>
                         <td />
-                        <td>Free</td>
-                        <td>Just $49</td>
-                      </tr>
-                      <tr>
-                        <td />
                         <td>
-                          <Button href='#' round fill disabled bsStyle='default'>Current Version</Button>
-                        </td>
-                        <td>
-                          <Button target='_blank' href='http://www.creative-tim.com/product/light-bootstrap-dashboard-pro-react/?ref=lbd-react-free' round fill bsStyle='info'>Start New League</Button>
+                          <Button round fill bsStyle='info'>Next Step</Button>
                         </td>
                       </tr>
                     </tbody>
