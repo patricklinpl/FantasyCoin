@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Table, Grid, Row, Col } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
 import appRoutes from 'routes/app.jsx'
 
 import Card from 'components/Card/Card'
@@ -15,10 +14,6 @@ class Icons extends Component {
     this.state = {
       coin: []
     }
-  }
-
-  activeRoute (routeName) {
-    return this.props.location.pathname.indexOf(routeName) > -1 ? 'active' : ''
   }
 
   componentDidMount () {
@@ -46,19 +41,19 @@ class Icons extends Component {
                   <Table>
                     <tbody>
                       <tr>
-                        <td>Patrick Lin</td>
+                        <td>Test1</td>
                         <td><i className='fa fa-check text-success' /></td>
                       </tr>
                       <tr>
-                        <td>Max Leung</td>
+                        <td>Test2</td>
                         <td><i className='fa fa-check text-success' /></td>
                       </tr>
                       <tr>
-                        <td>Ze Chen</td>
+                        <td>Test3</td>
                         <td><i className='fa fa-check text-success' /></td>
                       </tr>
                       <tr>
-                        <td>Michael Sun</td>
+                        <td>Test2</td>
                         <td><i className='fa fa-check text-success' /></td>
                       </tr>
                       <tr>
@@ -68,21 +63,6 @@ class Icons extends Component {
                       <tr>
                         <td />
                         <td>
-                          {
-                            appRoutes.map((prop, key) => {
-                              if (!prop.redirect) {
-                                return (
-                                  <li className={prop.league ? 'active active-pro' : this.activeRoute(prop.path)} key={key}>
-                                    <NavLink to={prop.path} className='nav-link' activeClassName='active'>
-                                      <i className={prop.icon} />
-                                      <p>{prop.name}</p>
-                                    </NavLink>
-                                  </li>
-                                )
-                              }
-                              return null
-                            })
-                          }
                           <Button round fill bsStyle='info'>Next Step</Button>
                         </td>
                       </tr>

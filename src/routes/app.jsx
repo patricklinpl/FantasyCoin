@@ -6,6 +6,7 @@ import Icons from 'views/Icons/Icons'
 import Maps from 'views/Maps/Maps'
 import Notifications from 'views/Notifications/Notifications'
 import League1 from 'views/League1/League1'
+import League2 from 'views/League2/League2'
 
 const appRoutes = [
   { path: '/dashboard', name: 'Dashboard', icon: 'pe-7s-graph', component: Dashboard },
@@ -16,6 +17,7 @@ const appRoutes = [
   { path: '/maps', name: 'Maps', icon: 'pe-7s-map-marker', component: Maps },
   { path: '/notifications', name: 'Notifications', icon: 'pe-7s-bell', component: Notifications },
   { league: true, path: '/league1', name: 'Start New League', icon: 'pe-7s-rocket', component: League1 },
+  { league2: true, path: '/league2', name: 'Next', icon: 'pe-7s-rocket', component: League2 },
   { redirect: true, path: '/', to: '/dashboard', name: 'Dashboard' }
 ]
 
