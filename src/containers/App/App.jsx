@@ -46,7 +46,7 @@ class App extends Component {
       title: (<span data-notify='icon' className='pe-7s-gift' />),
       message: (
         <div>
-                    Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer.
+                    Welcome to <b>Fantasy Coin</b> - a fantasy like app for all your crypto currencies
         </div>
       ),
       level: level,
@@ -76,10 +76,10 @@ class App extends Component {
         break
     }
     _notificationSystem.addNotification({
-      title: (<span data-notify='icon' className='pe-7s-gift' />),
+      title: (<span data-notify='icon' className='pe-7s-cash' />),
       message: (
         <div>
-                    Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer.
+                    Welcome to <b>Fantasy Coin</b> - a fantasy like app for all your crypto currencies
         </div>
       ),
       level: level,

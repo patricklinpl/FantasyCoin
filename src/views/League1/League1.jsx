@@ -68,21 +68,19 @@ class Icons extends Component {
                       <tr>
                         <td />
                         <td>
-                          {
+                          {/* {
                             appRoutes.map((prop, key) => {
                               if (!prop.redirect) {
                                 return (
-                                  <li className={prop.league ? 'active active-pro' : this.activeRoute(prop.path)} key={key}>
-                                    <NavLink to={prop.path} className='nav-link' activeClassName='active'>
-                                      <i className={prop.icon} />
-                                      <p>{prop.name}</p>
-                                    </NavLink>
-                                  </li>
+                                  <NavLink to={league2} className='nav-link' activeClassName='active'>
+                                    <i className={league.icon} />
+                                    <p>{league.name}</p>
+                                  </NavLink>
                                 )
                               }
                               return null
                             })
-                          }
+                          } */}
                           <Button round fill bsStyle='info'>Next Step</Button>
                         </td>
                       </tr>

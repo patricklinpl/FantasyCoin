@@ -34,36 +34,56 @@ class Icons extends Component {
             <Col md={8} mdOffset={2}>
               <Card
                 hCenter
-                title='Pick your team here'
-                category='Please select up to 5 people to compete against'
+                title='Pick your coins here'
+                category='Please select up to 10 coins for your portfolio'
                 ctTableResponsive ctTableFullWidth ctTableLeague
                 content={
                   <Table>
                     <tbody>
                       <tr>
-                        <td>Test1</td>
+                        <td>BTC</td>
                         <td><i className='fa fa-check text-success' /></td>
                       </tr>
                       <tr>
-                        <td>Test2</td>
+                        <td>ETH</td>
                         <td><i className='fa fa-check text-success' /></td>
                       </tr>
                       <tr>
-                        <td>Test3</td>
+                        <td>LTC</td>
                         <td><i className='fa fa-check text-success' /></td>
                       </tr>
                       <tr>
-                        <td>Test2</td>
+                        <td>ACT</td>
                         <td><i className='fa fa-check text-success' /></td>
                       </tr>
                       <tr>
-                        <td>Paul George</td>
+                        <td>XRP</td>
+                        <td><i className='fa fa-check text-success' /></td>
+                      </tr>
+                      <tr>
+                        <td>XLM</td>
+                        <td><i className='fa fa-check text-success' /></td>
+                      </tr>
+                      <tr>
+                        <td>BON</td>
+                        <td><i className='fa fa-check text-success' /></td>
+                      </tr>
+                      <tr>
+                        <td>HGT</td>
+                        <td><i className='fa fa-check text-success' /></td>
+                      </tr>
+                      <tr>
+                        <td>NIO</td>
+                        <td><i className='fa fa-check text-success' /></td>
+                      </tr>
+                      <tr>
+                        <td>VIA</td>
                         <td><i className='fa fa-check text-success' /></td>
                       </tr>
                       <tr>
                         <td />
                         <td>
-                          <Button round fill bsStyle='info'>Next Step</Button>
+                          <Button round fill bsStyle='info'>Done</Button>
                         </td>
                       </tr>
                     </tbody>
