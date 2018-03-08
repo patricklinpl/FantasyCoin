@@ -35,7 +35,7 @@ class Icons extends Component {
                 hCenter
                 title='Pick your team here'
                 category='Please select up to 5 people to compete against'
-                ctTableResponsive ctTableFullWidth ctTableUpgrade
+                ctTableResponsive ctTableFullWidth ctTableLeague
                 content={
                   <Table>
                     <tbody>

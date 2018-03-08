@@ -101,7 +101,7 @@ class Dashboard extends Component {
                         hCenter
                         title='Leaderboard'
                         category='Your Competetion'
-                        ctTableResponsive ctTableFullWidth ctTableUpgrade
+                        ctTableResponsive ctTableFullWidth ctTableLeague
                         content={
                           <Table>
                             <thead>
