@@ -9,13 +9,16 @@ import {News} from 'components/News/News.jsx'
 import * as Icon from 'react-cryptocoins'
 import {
   dataPie,
-  legendPie,
-  dataBar,
-  optionsBar,
-  responsiveBar,
-  legendBar
+  legendPie
 } from 'variables/Variables.jsx'
 import axios from 'axios'
+
+var cardStyle = {
+  display: 'block',
+  width: '80vw',
+  transitionDuration: '0.3s',
+  height: '45vw'
+}
 
 class Dashboard extends Component {
   constructor (props) {
@@ -96,7 +99,7 @@ class Dashboard extends Component {
               <div className='content'>
                 <Grid fluid>
                   <Row>
-                    <Col md={8} mdOffset={2}>
+                    <Col md={12}>
                       <Card
                         hCenter
                         title='Leaderboard'
@@ -165,37 +168,13 @@ class Dashboard extends Component {
           </Row>
 
           <Row>
-            <Col md={6}>
-              <Card
-                id='chartActivity'
-                title='2014 Sales'
-                category='All products including Taxes'
-                stats='Data information certified'
-                statsIcon='fa fa-check'
-                content={
-                  <div className='ct-chart'>
-                    <ChartistGraph
-                      data={dataBar}
-                      type='Bar'
-                      options={optionsBar}
-                      responsiveOptions={responsiveBar}
-                    />
-                  </div>
-                }
-                legend={
-                  <div className='legend'>
-                    {this.createLegend(legendBar)}
-                  </div>
-                }
-              />
-            </Col>
-
-            <Col md={6}>
+            <Col md={12}>
               <Card
                 title='News'
                 category='Your Daily Crypto Currency News'
                 stats='Updated 3 minutes ago'
                 statsIcon='fa fa-history'
+                style={cardStyle}
                 content={
                   <div className='table-full-width'>
                     <table className='table'>

@@ -1,3 +1,6 @@
+// For API
+var apiKey = "5c922eb873824ce1a0c6e3e1f83f3dad"
+
 
 //
 // //
@@ -568,5 +571,6 @@ module.exports = {
   dataBar,
   optionsBar,
   responsiveBar,
-  legendBar // For charts (Dashboard view)
+  legendBar,    // For charts (Dashboard view)
+  apiKey
 }
