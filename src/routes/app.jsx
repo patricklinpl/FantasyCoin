@@ -10,14 +10,7 @@ const appRoutes = [
   { path: '/user', name: 'User Profile', icon: 'pe-7s-user', component: UserProfile },
   { path: '/leaderboard', name: 'Leader Board', icon: 'pe-7s-cup', component: LeaderBoard },
   { path: '/notifications', name: 'Notifications', icon: 'pe-7s-bell', component: Notifications },
-  { league: true, path: '/league1', name: 'Start New League', icon: 'pe-7s-rocket', component: League1 },
-  { league2: true, path: '/league2', name: 'Next', icon: 'pe-7s-rocket', component: League2 },
-  { redirect: true, path: '/', to: '/dashboard', name: 'Dashboard' }
-]
-
-const leagueRoutes = [
-  { league: true, path: '/league1', name: 'Start New League', icon: 'pe-7s-rocket', component: League1 },
-  { league2: true, path: '/league2', name: 'Next', icon: 'pe-7s-rocket', component: League2 }
+  { league: true, path: '/league1', name: 'Start New League', icon: 'pe-7s-rocket', component: League1 }, { redirect: true, path: '/', to: '/dashboard', name: 'Dashboard' }
 ]
 
 export default appRoutes

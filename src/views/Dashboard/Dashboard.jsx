@@ -57,7 +57,7 @@ class Dashboard extends Component {
       <div className='content'>
         <Grid fluid>
           <Row>
-            <Col lg={3} sm={6}>
+            <Col lg={4} sm={6}>
               <StatsCard
                 bigIcon={<i className='pe-7s-wallet text-success' />}
                 statsText={this.state.coin.symbol}
@@ -66,7 +66,7 @@ class Dashboard extends Component {
                 statsIconText='Top Coin'
               />
             </Col>
-            <Col lg={3} sm={6}>
+            <Col lg={4} sm={6}>
               <StatsCard
                 bigIcon={<i className='pe-7s-graph2 text-primary' />}
                 statsText='Overall Performance'
@@ -75,22 +75,13 @@ class Dashboard extends Component {
                 statsIconText='Last day'
               />
             </Col>
-            <Col lg={3} sm={6}>
+            <Col lg={4} sm={6}>
               <StatsCard
                 bigIcon={<i className='pe-7s-medal text-success' />}
                 statsText='Wins'
                 statsValue='23'
                 statsIcon={<i className='fa fa-clock-o' />}
                 statsIconText='In the last hour'
-              />
-            </Col>
-            <Col lg={3} sm={6}>
-              <StatsCard
-                bigIcon={<i className='fa fa-twitter text-info' />}
-                statsText='Insert some shit here'
-                statsValue='???'
-                statsIcon={<i className='fa fa-refresh' />}
-                statsIconText='Updated now'
               />
             </Col>
           </Row>
