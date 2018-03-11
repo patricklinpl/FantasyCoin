@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Table, Grid, Row, Col } from 'react-bootstrap'
-import leagueRoutes from 'routes/league.jsx'
+import appRoutes from 'routes/app.jsx'
 
 import Card from 'components/Card/Card'
 

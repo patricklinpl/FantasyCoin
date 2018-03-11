@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Table, Grid, Row, Col } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
-import leagueRoutes from 'routes/league.jsx'
+import appRoutes from 'routes/app.jsx'
 
 import Card from 'components/Card/Card'
 
@@ -11,8 +11,9 @@ import axios from 'axios'
 class Icons extends Component {
   constructor (props) {
     super(props)
+
     this.state = {
-      width: window.innerWidth
+      coin: []
     }
   }
 
@@ -67,25 +68,19 @@ class Icons extends Component {
                       <tr>
                         <td />
                         <td>
-                          <div className='sidebar-wrapper'>
-                            <ul className='nav'>
-                              {
-                                leagueRoutes.map((prop, key) => {
-                                  if (!prop.redirect) {
-                                    return (
-                                      <li className={prop.league ? 'active active-pro' : this.activeRoute(prop.path)} key={key}>
-                                        <NavLink to={prop.path} className='nav-link' activeClassName='active'>
-                                          <i className={prop.icon} />
-                                          <p>{prop.name}</p>
-                                        </NavLink>
-                                      </li>
-                                    )
-                                  }
-                                  return null
-                                })
+                          {/* {
+                            appRoutes.map((prop, key) => {
+                              if (!prop.redirect) {
+                                return (
+                                  <NavLink to={league2} className='nav-link' activeClassName='active'>
+                                    <i className={league.icon} />
+                                    <p>{league.name}</p>
+                                  </NavLink>
+                                )
                               }
-                            </ul>
-                          </div>
+                              return null
+                            })
+                          } */}
                           <Button round fill bsStyle='info'>Next Step</Button>
                         </td>
                       </tr>
