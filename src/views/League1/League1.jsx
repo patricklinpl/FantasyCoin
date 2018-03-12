@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Table, Grid, Row, Col } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import appRoutes from 'routes/app.jsx'
+import Checkbox from 'elements/CustomCheckbox/CustomCheckbox.jsx'
 
 import Card from 'components/Card/Card'
 
@@ -12,7 +13,7 @@ class Icons extends Component {
     super(props)
 
     this.state = {
-      coin: []
+      players: []
     }
   }
 
@@ -20,17 +21,32 @@ class Icons extends Component {
     return this.props.location.pathname.indexOf(routeName) > -1 ? 'active' : ''
   }
 
-  componentDidMount () {
-    axios.get(`http://api.coinmarketcap.com/v1/ticker`)
-      .then(res => {
-        var coin = []
-        for (var i = 0; i < 30; i++) {
-          coin.push(res.data[i].symbol)
-        }
-      })
-  }
-
   render () {
+    var playerNames = [
+      'Jason',
+      'Patrick',
+      'Michael',
+      'Ze',
+      'Max',
+      'Paul'
+    ]
+
+    var team = []
+    var number
+    for (var i = 0; i < 6; i++) {
+      number = 'checkbox' + i
+      team.push(
+        <tr>
+          <td>{playerNames[i]}</td>
+          <td>
+            <Checkbox
+              number={number}
+              isChecked={!!(i === 1 || i === 2)}
+            />
+          </td>
+        </tr>
+      )
+    }
     return (
       <div className='content'>
         <Grid fluid>
@@ -44,26 +60,7 @@ class Icons extends Component {
                 content={
                   <Table>
                     <tbody>
-                      <tr>
-                        <td>Patrick Lin</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
-                      <tr>
-                        <td>Max Leung</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
-                      <tr>
-                        <td>Ze Chen</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
-                      <tr>
-                        <td>Michael Sun</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
-                      <tr>
-                        <td>Paul George</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
+                      {team}
                       <tr>
                         <td />
                         <td>

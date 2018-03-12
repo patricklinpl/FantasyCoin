@@ -54,6 +54,37 @@ class Dashboard extends Component {
   }
 
   render () {
+    var playerNames = [
+      'Jason',
+      'Patrick',
+      'Michael',
+      'Ze',
+      'Max',
+      'Paul'
+    ]
+
+    var roi = [
+      '20',
+      '43',
+      '15',
+      '23',
+      '89',
+      '110'
+    ]
+
+    var team = []
+    var number
+    for (var i = 0; i < 6; i++) {
+      number = 'checkbox' + i
+      team.push(
+        <tr>
+          <td>{playerNames[i]}</td>
+          <td>{roi[i]}%</td>
+          <td>#{i+1}</td>
+        </tr>
+      )
+    }
+
     return (
       <div className='content'>
         <Grid fluid>
@@ -105,31 +136,7 @@ class Dashboard extends Component {
                                 <th className='text-center'>Rank</th>
                               </tr></thead>
                             <tbody>
-                              <tr>
-                                <td>Jason</td>
-                                <td>Insert ROI</td>
-                                <td>#1</td>
-                              </tr>
-                              <tr>
-                                <td>Max</td>
-                                <td>-99%</td>
-                                <td>#2</td>
-                              </tr>
-                              <tr>
-                                <td>Ze</td>
-                                <td>7%</td>
-                                <td>#3</td>
-                              </tr>
-                              <tr>
-                                <td>Patrick</td>
-                                <td>Godliness</td>
-                                <td>#4</td>
-                              </tr>
-                              <tr>
-                                <td>Michael</td>
-                                <td>Holy SH*T</td>
-                                <td>#1</td>
-                              </tr>
+                              {team}
                             </tbody>
                           </Table>
                         }
