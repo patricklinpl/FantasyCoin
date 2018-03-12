@@ -1,6 +1,12 @@
 import React, {Component} from 'react'
 import { NavItem, Nav, NavDropdown, MenuItem } from 'react-bootstrap'
 
+import { GoogleLogin } from 'react-google-login'
+
+const responseGoogle = (response) => {
+  console.log(response)
+}
+
 class HeaderLinks extends Component {
   render () {
     const notification = (
@@ -41,7 +47,12 @@ class HeaderLinks extends Component {
             <MenuItem divider />
             <MenuItem eventKey={2.5}>Separated link</MenuItem>
           </NavDropdown>
-          <NavItem eventKey={3} href='#'>Log out</NavItem>
+          <NavItem eventKey={3} href='#'>          <GoogleLogin
+            clientId='658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com'
+            buttonText='Login'
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+          /></NavItem>
         </Nav>
       </div>
     )
