@@ -5,7 +5,6 @@ import appRoutes from 'routes/app.jsx'
 
 import Card from 'components/Card/Card'
 
-import Button from 'elements/CustomButton/CustomButton'
 import axios from 'axios'
 
 class Icons extends Component {
@@ -68,20 +67,21 @@ class Icons extends Component {
                       <tr>
                         <td />
                         <td>
-                          {/* {
+                          {
                             appRoutes.map((prop, key) => {
-                              if (!prop.redirect) {
+                              if (prop.league2) {
                                 return (
-                                  <NavLink to={league2} className='nav-link' activeClassName='active'>
-                                    <i className={league.icon} />
-                                    <p>{league.name}</p>
-                                  </NavLink>
+                                  <div className={prop.league ? 'active active-pro' : this.activeRoute(prop.path)} key={key}>
+                                    <NavLink to={prop.path} className='nav-link' activeClassName='active'>
+                                      <i className={prop.icon} />
+                                      <p>{prop.name}</p>
+                                    </NavLink>
+                                  </div>
                                 )
                               }
                               return null
                             })
-                          } */}
-                          <Button round fill bsStyle='info'>Next Step</Button>
+                          }
                         </td>
                       </tr>
                     </tbody>

@@ -3,8 +3,9 @@ import { Table, Grid, Row, Col } from 'react-bootstrap'
 import appRoutes from 'routes/app.jsx'
 
 import Card from 'components/Card/Card'
+import { NavLink } from 'react-router-dom'
+import Checkbox from 'elements/CustomCheckbox/CustomCheckbox.jsx'
 
-import Button from 'elements/CustomButton/CustomButton'
 import axios from 'axios'
 
 class Icons extends Component {
@@ -17,16 +18,43 @@ class Icons extends Component {
   }
 
   componentDidMount () {
-    axios.get(`http://api.coinmarketcap.com/v1/ticker`)
+    var data = []
+    axios.get('https://api.coinmarketcap.com/v1/ticker')
       .then(res => {
-        var coin = []
-        for (var i = 0; i < 30; i++) {
-          coin.push(res.data[i].symbol)
+        for (var i = 0; i < res.data.length; i++) {
+          data.push(res.data[i].symbol)
         }
+        this.setState({ coin: data })
+      })
+      .catch(err => {
+        data.push('Unable to load coin data')
+        console.log(err)
       })
   }
 
   render () {
+    console.log(this.state.coin[0])
+    var allCoins = []
+    for (var i = 0; i < this.state.coin.length; i++) {
+      allCoins.push(this.state.coin[i])
+    }
+
+    var coins = []
+    var number
+    for (var j = 0; j < allCoins.length; j++) {
+      number = 'checkbox' + j
+      coins.push(
+        <tr key={j}>
+          <td>{allCoins[j]}</td>
+          <td>
+            <Checkbox
+              number={number}
+              isChecked={!!(j === 1 || j === 2)}
+            />
+          </td>
+        </tr>
+      )
+    }
     return (
       <div className='content'>
         <Grid fluid>
@@ -40,52 +68,22 @@ class Icons extends Component {
                 content={
                   <Table>
                     <tbody>
-                      <tr>
-                        <td>BTC</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
-                      <tr>
-                        <td>ETH</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
-                      <tr>
-                        <td>LTC</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
-                      <tr>
-                        <td>ACT</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
-                      <tr>
-                        <td>XRP</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
-                      <tr>
-                        <td>XLM</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
-                      <tr>
-                        <td>BON</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
-                      <tr>
-                        <td>HGT</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
-                      <tr>
-                        <td>NIO</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
-                      <tr>
-                        <td>VIA</td>
-                        <td><i className='fa fa-check text-success' /></td>
-                      </tr>
-                      <tr>
-                        <td />
-                        <td>
-                          <Button round fill bsStyle='info'>Done</Button>
-                        </td>
-                      </tr>
+                      {coins.length === 0 ? 'Unable to load data' : coins}
+                      <td />
+                      {
+                        appRoutes.map((prop, key) => {
+                          if (prop.done) {
+                            return (
+                              <div className={prop.done ? 'active active-pro' : this.activeRoute(prop.path)} key={key}>
+                                <NavLink to={prop.path} className='nav-link' activeClassName='active'>
+                                  <p>{prop.name}</p>
+                                </NavLink>
+                              </div>
+                            )
+                          }
+                          return null
+                        })
+                      }
                     </tbody>
                   </Table>
                 }

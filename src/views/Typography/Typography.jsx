@@ -11,28 +11,28 @@ class Typography extends Component {
           <Row>
             <Col md={12}>
               <Card
-                title='Light Bootstrap Table Heading'
+                title='Fantasy Coin'
                 category='Created using Roboto Font Family'
                 content={
                   <div>
                     <div className='typo-line'>
-                      <h1><p className='category'>Header 1</p>Light Bootstrap Table Heading </h1>
+                      <h1><p className='category'>Header 1</p>Fantasy Coin </h1>
                     </div>
 
                     <div className='typo-line'>
-                      <h2><p className='category'>Header 2</p>Light Bootstrap Table Heading</h2>
+                      <h2><p className='category'>Header 2</p>Fantasy Coin</h2>
                     </div>
                     <div className='typo-line'>
-                      <h3><p className='category'>Header 3</p>Light Bootstrap Table Heading</h3>
+                      <h3><p className='category'>Header 3</p>Fantasy Coin</h3>
                     </div>
                     <div className='typo-line'>
-                      <h4><p className='category'>Header 4</p>Light Bootstrap Table Heading</h4>
+                      <h4><p className='category'>Header 4</p>Fantasy Coin</h4>
                     </div>
                     <div className='typo-line'>
-                      <h5><p className='category'>Header 5</p>Light Bootstrap Table Heading</h5>
+                      <h5><p className='category'>Header 5</p>Fantasy Coin</h5>
                     </div>
                     <div className='typo-line'>
-                      <h6><p className='category'>Header 6</p>Light Bootstrap Table Heading</h6>
+                      <h6><p className='category'>Header 6</p>Fantasy Coin</h6>
                     </div>
                     <div className='typo-line'>
                       <p><span className='category'>Paragraph</span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.</p>
@@ -61,19 +61,19 @@ class Typography extends Component {
                                              --> */}
                       <p className='category'>Coloured Text</p>
                       <p className='text-primary'>
-                                                Text Primary - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
+                                                Text Primary - Fantasy Coin and complex bootstrap dashboard you've ever seen on the internet.
                       </p>
                       <p className='text-info'>
-                                                Text Info - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
+                                                Text Info - Fantasy Coin
                       </p>
                       <p className='text-success'>
-                                                Text Success - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
+                                                Text Success - Fantasy Coin
                       </p>
                       <p className='text-warning'>
-                                                Text Warning - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
+                                                Text Warning - Fantasy Coin
                       </p>
                       <p className='text-danger'>
-                                                Text Danger - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
+                                                Text Danger - Fantasy Coin
                       </p>
                     </div>
 

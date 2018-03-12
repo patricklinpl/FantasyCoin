@@ -48,7 +48,7 @@ class Sidebar extends Component {
             { this.state.width <= 991 ? (<HeaderLinks />) : null }
             {
               appRoutes.map((prop, key) => {
-                if (!prop.redirect) {
+                if (!prop.redirect && !prop.league2 && !prop.done && !prop.login) {
                   return (
                     <li className={prop.league ? 'active active-pro' : this.activeRoute(prop.path)} key={key}>
                       <NavLink to={prop.path} className='nav-link' activeClassName='active'>

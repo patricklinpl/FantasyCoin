@@ -15,7 +15,7 @@ class HeaderLinks extends Component {
       <div>
         <Nav>
           <NavItem eventKey={1} href='#'>
-            <i className='fa fa-dashboard' />
+            <i className='fa fa-money' />
             <p className='hidden-lg hidden-md'>Dashboard</p>
           </NavItem>
           <NavDropdown eventKey={2} title={notification} noCaret id='basic-nav-dropdown'>

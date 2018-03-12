@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import ChartistGraph from 'react-chartist'
 import { Table, Grid, Row, Col } from 'react-bootstrap'
-import Button from 'elements/CustomButton/CustomButton'
 
 import {Card} from 'components/Card/Card.jsx'
 import {StatsCard} from 'components/StatsCard/StatsCard.jsx'
 import {News} from 'components/News/News.jsx'
-import * as Icon from 'react-cryptocoins'
 import {
   dataPie,
   legendPie
@@ -94,7 +92,7 @@ class Dashboard extends Component {
                     <Col md={13}>
                       <Card
                         hCenter
-                        title='Leaderboard'
+                        title='LOGIN'
                         category='Your Competetion'
                         ctTableResponsive ctTableFullWidth ctTableLeague
                         content={
