@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { NavItem, Nav, NavDropdown, MenuItem } from 'react-bootstrap'
 
 import { GoogleLogin } from 'react-google-login'
+import { LOGIN_AUTH } from '../../config/config'
 
 const responseGoogle = (response) => {
   console.log(response)
@@ -48,7 +49,7 @@ class HeaderLinks extends Component {
             <MenuItem eventKey={2.5}>Separated link</MenuItem>
           </NavDropdown>
           <NavItem eventKey={3} href='#'>          <GoogleLogin
-            clientId='658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com'
+            clientId={LOGIN_AUTH.clientID}
             buttonText='Login'
             onSuccess={responseGoogle}
             onFailure={responseGoogle}

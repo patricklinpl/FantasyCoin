@@ -80,7 +80,7 @@ class Dashboard extends Component {
         <tr>
           <td>{playerNames[i]}</td>
           <td>{roi[i]}%</td>
-          <td>#{i+1}</td>
+          <td>#{i + 1}</td>
         </tr>
       )
     }
