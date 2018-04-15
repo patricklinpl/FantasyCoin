@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import ChartistGraph from 'react-chartist'
 import { Table, Grid, Row, Col } from 'react-bootstrap'
-import Button from 'elements/CustomButton/CustomButton'
+// import Button from 'elements/CustomButton/CustomButton'
 
-import {Card} from 'components/Card/Card.jsx'
-import {StatsCard} from 'components/StatsCard/StatsCard.jsx'
-import {News} from 'components/News/News.jsx'
-import * as Icon from 'react-cryptocoins'
+import {Card} from 'components/Card.jsx'
+import {StatsCard} from 'components/StatsCard.jsx'
+import {News} from 'components/News.jsx'
+// import * as Icon from 'react-cryptocoins'
 import {
   dataPie,
   legendPie
 } from 'variables/Variables.jsx'
 import axios from 'axios'
+
+import withAuthorization from '../components/withAuthorization'
 
 var cardStyle = {
   display: 'block',
@@ -191,4 +193,6 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+const authCondition = (authUser) => !!authUser
+
+export default withAuthorization(authCondition)(Dashboard)
