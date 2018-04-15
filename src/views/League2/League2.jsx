@@ -7,18 +7,10 @@ import { NavLink } from 'react-router-dom'
 import Checkbox from 'elements/CustomCheckbox/CustomCheckbox.jsx'
 
 import axios from 'axios'
-import { DB_CONFIG } from '../../config/config'
-import firebase from 'firebase/app'
-import 'firebase/database'
 
 class Icons extends Component {
   constructor (props) {
     super(props)
-    this.addCoin = this.addCoin.bind(this)
-    this.removeCoin = this.removeCoin.bind(this)
-
-    this.app = firebase.initializeApp(DB_CONFIG)
-    this.database = this.app.database().ref().child('portfolio')
 
     this.state = {
       coinData: [],
@@ -43,39 +35,6 @@ class Icons extends Component {
 
   componentWillMount () {
     const currentPortfolio = this.state.portfolio
-
-    // DataSnapshot
-    this.database.on('child_added', snap => {
-      currentPortfolio.push({
-        id: snap.key,
-        coinContent: snap.val().coinContent
-      })
-
-      this.setState({
-        portfolio: currentPortfolio
-      })
-    })
-
-    this.database.on('child_removed', snap => {
-      for (var i = 0; i < currentPortfolio.length; i++) {
-        if (currentPortfolio[i].id === snap.key) {
-          currentPortfolio.splice(i, 1)
-        }
-      }
-
-      this.setState({
-        portfolio: currentPortfolio
-      })
-    })
-  }
-
-  addCoin (coin) {
-    this.database.push().set({ coinContent: coin })
-  }
-
-  removeCoin (coinId) {
-    console.log('from the parent: ' + coinId)
-    this.database.child(coinId).remove()
   }
 
   render () {

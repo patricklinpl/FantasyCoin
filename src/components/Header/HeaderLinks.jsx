@@ -1,13 +1,6 @@
 import React, {Component} from 'react'
 import { NavItem, Nav, NavDropdown, MenuItem } from 'react-bootstrap'
 
-import { GoogleLogin } from 'react-google-login'
-import { LOGIN_AUTH } from '../../config/config'
-
-const responseGoogle = (response) => {
-  console.log(response)
-}
-
 class HeaderLinks extends Component {
   render () {
     const notification = (
@@ -48,12 +41,7 @@ class HeaderLinks extends Component {
             <MenuItem divider />
             <MenuItem eventKey={2.5}>Separated link</MenuItem>
           </NavDropdown>
-          <NavItem eventKey={3} href='#'>          <GoogleLogin
-            clientId={LOGIN_AUTH.clientID}
-            buttonText='Login'
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-          /></NavItem>
+          <NavItem eventKey={3} href='#'>LOGIN</NavItem>
         </Nav>
       </div>
     )
