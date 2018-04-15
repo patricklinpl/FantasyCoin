@@ -4,14 +4,16 @@ import { Table, Grid, Row, Col } from 'react-bootstrap'
 // import Button from 'elements/CustomButton/CustomButton'
 
 import {Card} from 'components/Card.jsx'
-import {StatsCard} from 'components/StatsCard.jsx'
 import {News} from 'components/News.jsx'
+import TopCoin from 'components/TopCoin.jsx'
+import Performance from 'components/Performance.jsx'
+import Wins from 'components/Wins.jsx'
 // import * as Icon from 'react-cryptocoins'
 import {
   dataPie,
   legendPie
 } from 'variables/Variables.jsx'
-import axios from 'axios'
+// import axios from 'axios'
 
 import withAuthorization from '../components/withAuthorization'
 
@@ -45,14 +47,6 @@ class Dashboard extends Component {
       )
     }
     return legend
-  }
-
-  componentDidMount () {
-    axios.get(`http://api.coinmarketcap.com/v1/ticker`)
-      .then(res => {
-        const coin = res.data[0]
-        this.setState({ coin })
-      })
   }
 
   render () {
@@ -92,31 +86,13 @@ class Dashboard extends Component {
         <Grid fluid>
           <Row>
             <Col lg={4} sm={8}>
-              <StatsCard
-                bigIcon={<i className='pe-7s-wallet text-success' />}
-                statsText={this.state.coin.symbol}
-                statsValue={this.state.coin.percent_change_24h + '%'}
-                statsIcon={<i className='fa fa-calendar-o' />}
-                statsIconText='Top Coin'
-              />
+              <TopCoin />
             </Col>
             <Col lg={4} sm={8}>
-              <StatsCard
-                bigIcon={<i className='pe-7s-graph2 text-primary' />}
-                statsText='Overall Performance'
-                statsValue='203%'
-                statsIcon={<i className='fa fa-refresh' />}
-                statsIconText='Last day'
-              />
+              <Performance />
             </Col>
             <Col lg={4} sm={8}>
-              <StatsCard
-                bigIcon={<i className='pe-7s-medal text-success' />}
-                statsText='Wins'
-                statsValue='23'
-                statsIcon={<i className='fa fa-clock-o' />}
-                statsIconText='In the last hour'
-              />
+              <Wins />
             </Col>
           </Row>
           <Row>

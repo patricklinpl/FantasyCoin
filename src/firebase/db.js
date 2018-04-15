@@ -12,3 +12,6 @@ export const onceGetUsers = () =>
   db.ref('users').once('value')
 
 // Other Entity APIs ...
+
+export const doSetTopCoin = (topCoin) =>
+  db.ref('')
