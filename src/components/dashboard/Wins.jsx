@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {StatsCard} from 'components/StatsCard.jsx'
+import {StatsCard} from '../../components/StatsCard.jsx'
 
 class Wins extends Component {
   constructor (props) {
