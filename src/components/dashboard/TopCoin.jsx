@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import {StatsCard} from '../../components/StatsCard.jsx'
-import { db } from '../../firebase'
+import { firebase, db } from '../../firebase'
 
 class TopCoin extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      users: null
+      users: null,
+      currentUser: null
     }
   }
 
@@ -15,6 +16,12 @@ class TopCoin extends Component {
     db.onceGetUsers().then(snapshot =>
       this.setState(() => ({ users: snapshot.val() }))
     )
+
+    firebase.auth.onAuthStateChanged(authUser => {
+      authUser
+        ? this.setState(() => ({ currentUser: authUser }))
+        : this.setState(() => ({ currentUser: null }))
+    })
   }
 
   render () {
@@ -23,8 +30,8 @@ class TopCoin extends Component {
     return (
       <StatsCard
         bigIcon={<i className='pe-7s-wallet text-success' />}
-        statsText={!!users && <CoinSymbol users={users} />}
-        statsValue={!!users && <CoinPerformance users={users} />}
+        statsText={!!users && <CoinSymbol users={users} currentUser={this.state.currentUser} />}
+        statsValue={!!users && <CoinPerformance users={users} currentUser={this.state.currentUser} />}
         statsIcon={<i className='fa fa-calendar-o' />}
         statsIconText='Top Coin'
       />
@@ -36,29 +43,28 @@ const calculateTopCoin = (portfolio) => {
   var topCoin = 'N/A'
   var prevTopCoinChange = -99999999999999999
   for (var coin in portfolio) {
-    console.log(portfolio[coin].percent_change_24h)
     topCoin = (portfolio[coin].percent_change_24h > prevTopCoinChange) ? portfolio[coin] : topCoin
     prevTopCoinChange = (portfolio[coin].percent_change_24h > prevTopCoinChange) ? portfolio[coin].percent_change_24h : prevTopCoinChange
   }
   return topCoin
 }
 
-const CoinSymbol = ({ users }) =>
+const CoinSymbol = ({ users, currentUser }) =>
   <div>
 
     {Object.keys(users).map(key =>
       <div key={key}>{
-        calculateTopCoin(users[key].portfolio).symbol
+        calculateTopCoin(users[currentUser.uid].portfolio).symbol
       }</div>
     )}
   </div>
 
-const CoinPerformance = ({ users }) =>
+const CoinPerformance = ({ users, currentUser }) =>
   <div>
 
     {Object.keys(users).map(key =>
       <div key={key}>{
-        calculateTopCoin(users[key].portfolio).percent_change_24h + '%'
+        calculateTopCoin(users[currentUser.uid].portfolio).percent_change_24h + '%'
       }</div>
     )}
   </div>

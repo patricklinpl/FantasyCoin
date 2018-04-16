@@ -10,7 +10,6 @@ class Performance extends Component {
   }
 
   render () {
-    console.log(this.state.coin)
     return (
       <StatsCard
         bigIcon={<i className='pe-7s-graph2 text-primary' />}

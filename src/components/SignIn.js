@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 import { SignUpLink } from './SignUp';
 import { PasswordForgetLink } from './PasswordForget';
+import { updateCoinData } from '../utility/CoinMarketCapAPI'
 import { auth } from '../firebase';
 import * as routes from '../constants/routes';
 
@@ -44,6 +45,7 @@ class SignInForm extends Component {
     auth.doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState(() => ({ ...INITIAL_STATE }));
+        updateCoinData();
         history.push(routes.DASHBOARD);
       })
       .catch(error => {

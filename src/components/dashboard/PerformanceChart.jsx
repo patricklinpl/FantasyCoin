@@ -30,7 +30,6 @@ class PerformanceChart extends Component {
   }
 
   render () {
-    console.log(this.state.coin)
     return (
       <Card
         statsIcon='fa fa-clock-o'

@@ -18,7 +18,6 @@ class Wins extends Component {
   }
 
   render () {
-    console.log(this.state.coin)
     return (
       <Card
         title='News'

@@ -10,7 +10,6 @@ class Wins extends Component {
   }
 
   render () {
-    console.log(this.state.coin)
     return (
       <StatsCard
         bigIcon={<i className='pe-7s-medal text-success' />}
