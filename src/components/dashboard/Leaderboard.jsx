@@ -32,10 +32,10 @@ class Leaderboard extends Component {
     var team = []
     for (var i = 0; i < 6; i++) {
       team.push(
-        <tr>
-          <td>{playerNames[i]}</td>
-          <td>{roi[i]}%</td>
-          <td>#{i + 1}</td>
+        <tr key={'tr' + i.toString()}>
+          <td key={'td1-' + i.toString()}>{playerNames[i]}</td>
+          <td key={'td2-' + i.toString()}>{roi[i]}%</td>
+          <td key={'td3-' + i.toString()}>#{i + 1}</td>
         </tr>
       )
     }

@@ -19,6 +19,7 @@ export class News extends Component {
     axios.get('https://newsapi.org/v2/top-headlines?sources=crypto-coins-news&apiKey=5c922eb873824ce1a0c6e3e1f83f3dad')
       .then(res => {
         for (var i = 0; i < 6; i++) {
+          console.log(res.data)
           this.state.newsTitle.push(res.data.articles[i].title)
           this.state.newsImg.push(res.data.articles[i].urlToImage)
           this.state.newsURL.push(res.data.articles[i].url)

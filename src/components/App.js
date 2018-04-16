@@ -12,6 +12,7 @@ import PasswordForgetPage from './PasswordForget'
 import HomePage from './Home'
 import AccountPage from './Account'
 import Dashboard from '../views/Dashboard'
+import NewLeague from '../views/NewLeague'
 
 import * as routes from '../constants/routes'
 
@@ -31,6 +32,7 @@ const App = () =>
       <Route exact path={routes.HOME} component={() => <HomePage />} />
       <Route exact path={routes.DASHBOARD} component={() => <Dashboard />} />
       <Route exact path={routes.ACCOUNT} component={() => <AccountPage />} />
+      <Route exact path={routes.NEWLEAGUE} component={() => <NewLeague />} />
     </div>
   </Router>
 
