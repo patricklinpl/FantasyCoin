@@ -49,24 +49,12 @@ const calculateTopCoin = (portfolio) => {
   return topCoin
 }
 
-const CoinSymbol = ({ users, currentUser }) =>
-  <div>
+const CoinSymbol = ({ users, currentUser }) => {
+  return calculateTopCoin(users[currentUser.uid].portfolio).symbol
+}
 
-    {Object.keys(users).map(key =>
-      <div key={key}>{
-        calculateTopCoin(users[currentUser.uid].portfolio).symbol
-      }</div>
-    )}
-  </div>
-
-const CoinPerformance = ({ users, currentUser }) =>
-  <div>
-
-    {Object.keys(users).map(key =>
-      <div key={key}>{
-        calculateTopCoin(users[currentUser.uid].portfolio).percent_change_24h + '%'
-      }</div>
-    )}
-  </div>
+const CoinPerformance = ({ users, currentUser }) => {
+  return calculateTopCoin(users[currentUser.uid].portfolio).percent_change_24h + '%'
+}
 
 export default TopCoin
