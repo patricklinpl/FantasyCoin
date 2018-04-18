@@ -1,3 +1,4 @@
 node_modules
-Variables.jsx
-src/config/config.js
+src/firebase/auth.js
+src/firebase/firebase.js
+src/firebase/index.js
