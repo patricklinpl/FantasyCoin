@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {StatsCard} from '../../components/StatsCard.jsx'
+
 import { firebase, db } from '../../firebase'
 
 class TopCoin extends Component {
@@ -16,7 +17,6 @@ class TopCoin extends Component {
     db.onceGetUsers().then(snapshot =>
       this.setState(() => ({ users: snapshot.val() }))
     )
-
     firebase.auth.onAuthStateChanged(authUser => {
       authUser
         ? this.setState(() => ({ currentUser: authUser }))
