@@ -5,6 +5,7 @@ import Card from '../components/Card'
 import TeamSelect from '../components/newleague/TeamSelect'
 
 import withAuthorization from '../components/withAuthorization'
+import CoinSelect from '../components/newleague/CoinSelect';
 
 const NewLeaguePage = ({ history }) =>
   <div>
@@ -51,7 +52,7 @@ class NewLeague extends Component {
         <Grid fluid>
           <Row>
             <Col md={8} mdOffset={2}>
-            <TeamSelect />
+            <CoinSelect />
             </Col>
           </Row>
         </Grid>
