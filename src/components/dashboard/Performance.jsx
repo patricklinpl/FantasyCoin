@@ -44,9 +44,14 @@ const calculatePerformance = (portfolio) => {
   var totalGains = 0
   var portfolioSize = 0
   for (var coin in portfolio) {
+    console.log(portfolio[coin])
     portfolioSize++
-    totalGains += (portfolio[coin].percent_change_24h)
+    console.log(parseFloat(portfolio[coin].percent_change_24h, 10))
+    totalGains += parseFloat(portfolio[coin].percent_change_24h, 10)
   }
+  console.log(totalGains)
+  console.log(portfolioSize)
+  console.log(Math.round((parseFloat(totalGains) / portfolioSize) * 100) / 100)
   return Math.round((totalGains / portfolioSize) * 100) / 100
 }
 
