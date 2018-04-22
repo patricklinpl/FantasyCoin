@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'
 
 import Navigation from './Navigation'
-import LandingPage from './Landing'
+import LandingPage from '../views/Landing'
 import SignUpPage from './SignUp'
 import SignInPage from './SignIn'
 import PasswordForgetPage from './PasswordForget'
