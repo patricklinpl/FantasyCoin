@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Table, Grid, Row, Col } from 'react-bootstrap'
-import Checkbox from '../elements/CustomCheckbox/CustomCheckbox.jsx'
-import Card from '../components/Card'
+import { Grid, Row, Col } from 'react-bootstrap'
 import TeamSelect from '../components/newleague/TeamSelect'
 
 import withAuthorization from '../components/withAuthorization'
@@ -30,10 +28,6 @@ class NewLeague extends Component {
 
   onSubmit = (event) => {
     const {
-      userAdd,
-    } = this.state;
-
-    const {
       history,
     } = this.props;
 
@@ -41,12 +35,7 @@ class NewLeague extends Component {
   }
 
   render () {
-    const {
-      userAdd
-    } = this.state;
 
-    const isInvalid =
-      userAdd === [];
     return (
       <div className='content'>
         <Grid fluid>

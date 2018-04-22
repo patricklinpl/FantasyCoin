@@ -53,7 +53,7 @@ export const onceGetCoins = () =>
   db.ref('coins').once('value')
 
 export const doSetCoinInPortfolio = (key, coin, id, name, percent_change_1h, percent_change_24h, percent_change_7d, price_btc, price_usd, rank, symbol) =>
-  db.ref(`users/${key}/${coin}`).set({
+  db.ref(`users/${key}/portfolio/${coin}`).set({
     id,
     name,
     percent_change_1h,
@@ -64,3 +64,6 @@ export const doSetCoinInPortfolio = (key, coin, id, name, percent_change_1h, per
     rank,
     symbol
   })
+
+export const doDeletePortfolio = (key) =>
+  db.ref(`users/${key}/portfolio`).remove()
