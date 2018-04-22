@@ -9,7 +9,7 @@ var cardStyle = {
   height: '45vw'
 }
 
-class Wins extends Component {
+class NewsCard extends Component {
   constructor (props) {
     super(props)
 
@@ -37,4 +37,4 @@ class Wins extends Component {
   }
 }
 
-export default Wins
+export default NewsCard
