@@ -15,6 +15,7 @@ const SignUpPage = ({ history }) =>
 
 const INITIAL_STATE = {
   username: '',
+  name: '',
   email: '',
   passwordOne: '',
   passwordTwo: '',
@@ -35,6 +36,7 @@ class SignUpForm extends Component {
   onSubmit = (event) => {
     const {
       username,
+      name,
       email,
       passwordOne,
     } = this.state;
@@ -47,7 +49,25 @@ class SignUpForm extends Component {
       .then(authUser => {
 
         // Create a user in your own accessible Firebase Database too
-        db.doCreateUser(authUser.uid, username, email)
+        db.doCreateUser(authUser.uid, username, name, email)
+          .then(() => {
+            this.setState(() => ({ ...INITIAL_STATE }));
+          })
+          .catch(error => {
+            this.setState(byPropKey('error', error));
+          });
+
+        // Initialize an empty portfolio for the user
+        db.doInitializePortfolio(authUser.uid, 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A')
+          .then(() => {
+            this.setState(() => ({ ...INITIAL_STATE }));
+          })
+          .catch(error => {
+            this.setState(byPropKey('error', error));
+          });
+
+        // Initialize statistics for the user
+        db.doInitializeStats(authUser.uid, 0, 0)
           .then(() => {
             this.setState(() => ({ ...INITIAL_STATE }));
             history.push(routes.HOME);
@@ -67,6 +87,7 @@ class SignUpForm extends Component {
   render() {
     const {
       username,
+      name,
       email,
       passwordOne,
       passwordTwo,
@@ -77,13 +98,20 @@ class SignUpForm extends Component {
     passwordOne !== passwordTwo ||
     passwordOne === '' ||
     email === '' ||
-    username === '';
+    username === '' ||
+    name === '';
 
     return (
       <form onSubmit={this.onSubmit}>
-              <input
+        <input
           value={username}
           onChange={event => this.setState(byPropKey('username', event.target.value))}
+          type="text"
+          placeholder="Username"
+        />
+        <input
+          value={name}
+          onChange={event => this.setState(byPropKey('name', event.target.value))}
           type="text"
           placeholder="Full Name"
         />

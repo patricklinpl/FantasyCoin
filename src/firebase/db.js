@@ -7,6 +7,25 @@ export const doCreateUser = (id, username, email) =>
     email
   })
 
+export const doInitializePortfolio = (key, id, name, percent_change_1h, percent_change_24h, percent_change_7d, price_btc, price_usd, rank, symbol) =>
+  db.ref(`users/${key}/portfolio/coin1`).set({
+    id,
+    name,
+    percent_change_1h,
+    percent_change_24h,
+    percent_change_7d,
+    price_btc,
+    price_usd,
+    rank,
+    symbol
+  })
+
+export const doInitializeStats = (key, wins, losses) =>
+  db.ref(`users/${key}/portfolio/coin1`).set({
+    wins,
+    losses
+  })
+
 export const onceGetUsers = () =>
   db.ref('users').once('value')
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Button from 'elements/CustomButton/CustomButton.jsx'
+import AuthUserContext from '../components/AuthUserContext'
 
 const headerStyle = {
   color: '#4A708B',
@@ -36,9 +37,28 @@ const LandingPage = () =>
        Here you will be able to compete with others to see who has the best performing
        crypto currency portfolio.
     </p>
-    <Button style={signUpStyle}>
-      <Link to='/signup'>Play Now</Link>
-    </Button>
+    <PlayButtonHandler />
   </div>
+
+// Handles the Play button route
+// 1. If user not signed in, take them to the signup page
+// 2. If user is signed in, take them to their dashboard
+const PlayButtonHandler = () =>
+  <AuthUserContext.Consumer>
+    {authUser => authUser
+      ? <PlayAuth />
+      : <PlayNonAuth />
+    }
+  </AuthUserContext.Consumer>
+
+const PlayAuth = () =>
+  <Button style={signUpStyle}>
+    <Link to='/dashboard'>Play Now</Link>
+  </Button>
+
+const PlayNonAuth = () =>
+  <Button style={signUpStyle}>
+    <Link to='/signup'>Play Now</Link>
+  </Button>
 
 export default LandingPage
