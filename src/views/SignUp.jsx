@@ -58,7 +58,7 @@ class SignUpForm extends Component {
           });
 
         // Initialize an empty portfolio for the user
-        db.doInitializePortfolio(authUser.uid, 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A')
+        db.doInitializePortfolio(authUser.uid, 'N/A', 'N/A', 0, 0, 0, 0, 0, 0, 'N/A')
           .then(() => {
             this.setState(() => ({ ...INITIAL_STATE }));
           })
@@ -67,7 +67,7 @@ class SignUpForm extends Component {
           });
 
         // Initialize statistics for the user
-        db.doInitializeStats(authUser.uid, 0, 0)
+        db.doInitializeStats(authUser.uid, 0, 0, 0)
           .then(() => {
             this.setState(() => ({ ...INITIAL_STATE }));
             history.push(routes.HOME);

@@ -1,14 +1,15 @@
 import { db } from './firebase'
 
 // User API
-export const doCreateUser = (id, username, email) =>
+export const doCreateUser = (id, username, name, email) =>
   db.ref(`users/${id}`).set({
     username,
+    name,
     email
   })
 
 export const doInitializePortfolio = (key, id, name, percent_change_1h, percent_change_24h, percent_change_7d, price_btc, price_usd, rank, symbol) =>
-  db.ref(`users/${key}/portfolio/coin1`).set({
+  db.ref(`users/${key}/portfolio/coin0`).set({
     id,
     name,
     percent_change_1h,
@@ -20,10 +21,11 @@ export const doInitializePortfolio = (key, id, name, percent_change_1h, percent_
     symbol
   })
 
-export const doInitializeStats = (key, wins, losses) =>
-  db.ref(`users/${key}/portfolio/coin1`).set({
+export const doInitializeStats = (key, wins, losses, portfolioPerformance) =>
+  db.ref(`users/${key}/statistics`).set({
     wins,
-    losses
+    losses,
+    portfolioPerformance
   })
 
 export const onceGetUsers = () =>
@@ -86,3 +88,6 @@ export const doSetCoinInPortfolio = (key, coin, id, name, percent_change_1h, per
 
 export const doDeletePortfolio = (key) =>
   db.ref(`users/${key}/portfolio`).remove()
+
+export const onceGetTopUsers = () =>
+  db.ref.child('users').orderbyChild('statistics/portfolioPerformance')

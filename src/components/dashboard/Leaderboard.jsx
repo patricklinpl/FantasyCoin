@@ -10,7 +10,8 @@ class Leaderboard extends Component {
 
     this.state = {
       users: null,
-      currentUser: null
+      currentUser: null,
+      topUsers: null
     }
   }
 
@@ -18,11 +19,16 @@ class Leaderboard extends Component {
     db.onceGetUsers().then(snapshot =>
       this.setState(() => ({ users: snapshot.val() }))
     )
+
     firebase.auth.onAuthStateChanged(authUser => {
       authUser
         ? this.setState(() => ({ currentUser: authUser }))
         : this.setState(() => ({ currentUser: null }))
     })
+
+    db.onceGetUsers().then(snapshot =>
+      this.setState(() => ({ users: snapshot.val() }))
+    )
   }
 
   render () {
@@ -54,7 +60,7 @@ class Leaderboard extends Component {
         </tr>
       )
     }
-  
+
     return (
       <Card
         hCenter
