@@ -14,15 +14,20 @@ class Performance extends Component {
   }
 
   componentDidMount () {
+    var localUsers = null
     db.onceGetUsers().then(snapshot =>
       this.setState(() => ({ users: snapshot.val() }))
     )
+
+    db.onceGetUsers().then(snapshot => { localUsers = snapshot.val })
 
     firebase.auth.onAuthStateChanged(authUser => {
       authUser
         ? this.setState(() => ({ currentUser: authUser }))
         : this.setState(() => ({ currentUser: null }))
     })
+
+    // console.log(calculatePerformance(this.state.users[this.state.currentUser.uid].portfolio))
   }
 
   render () {
@@ -44,14 +49,9 @@ const calculatePerformance = (portfolio) => {
   var totalGains = 0
   var portfolioSize = 0
   for (var coin in portfolio) {
-    console.log(portfolio[coin])
     portfolioSize++
-    console.log(parseFloat(portfolio[coin].percent_change_24h, 10))
     totalGains += parseFloat(portfolio[coin].percent_change_24h, 10)
   }
-  console.log(totalGains)
-  console.log(portfolioSize)
-  console.log(Math.round((parseFloat(totalGains) / portfolioSize) * 100) / 100)
   return Math.round((totalGains / portfolioSize) * 100) / 100
 }
 
