@@ -18,7 +18,7 @@ import * as routes from '../constants/routes';
 
 const SignUpPage = ({ history }) =>
   <div>
-    <h1>Sign Up</h1>
+    <h1 style={signUpHeader}>Sign Up</h1>
     <SignUpForm history={history} />
   </div>
 
@@ -35,6 +35,18 @@ const INITIAL_STATE = {
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value,
 });
+
+var signUpHeader = {
+  margin: 'auto',
+  width: '15%',
+  paddingBottom: '10px',
+  textAlign: 'center'
+}
+
+var test = {
+  margin: 'auto',
+  width: '15%',
+}
 
 class SignUpForm extends Component {
   constructor(props) {
@@ -116,9 +128,9 @@ class SignUpForm extends Component {
     } = this.state;
 
     return (
-      <Grid fluid>
+      <Grid fluid style={test}>
         <Row>
-          <Col lg={3} sm={6}>
+          <Col>
             <form onSubmit={this.onSubmit}>
               <FormGroup controlId="username" bsSize="large">
                 <ControlLabel>Username</ControlLabel>
@@ -160,7 +172,7 @@ class SignUpForm extends Component {
                 disabled={!this.validateForm()}
                 type="submit"
                 isLoading={this.state.isLoading}
-                text="Signup"
+                text="Sign Up"
                 loadingText="Signing up…"
               />
               { error && <p>{error.message}</p> }
