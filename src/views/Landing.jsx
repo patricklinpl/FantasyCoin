@@ -27,10 +27,15 @@ const signUpStyle = {
   color: '#888888'
 }
 
+var warning = {
+  color: 'orange',
+  fontSize: '14px'
+}
+
 const LandingPage = () =>
   <div>
     <h1 style={headerStyle}>
-    Welcome to Fantasy Coin
+    Welcome to Fantasy Coin (Beta)
     </h1>
     <p style={paragraphStyle}>
       This is a fun app that lets you test your cryptocurrency trading abilities.
