@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { SignUpLink } from './SignUp';
+import { SignUpLink } from '../views/SignUp';
 import { PasswordForgetLink } from './PasswordForget';
 import { updateCoinData } from '../utility/CoinMarketCapAPI'
 import { auth } from '../firebase';

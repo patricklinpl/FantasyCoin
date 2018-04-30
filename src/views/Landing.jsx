@@ -27,11 +27,6 @@ const signUpStyle = {
   color: '#888888'
 }
 
-var warning = {
-  color: 'orange',
-  fontSize: '14px'
-}
-
 const LandingPage = () =>
   <div>
     <h1 style={headerStyle}>
