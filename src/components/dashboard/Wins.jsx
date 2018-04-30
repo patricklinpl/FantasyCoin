@@ -40,7 +40,8 @@ class Wins extends Component {
 }
 
 const TotalWins = ({ users, currentUser }) => {
-  return users[currentUser.uid].statistics.wins
+  var wins = (typeof users[currentUser.uid].statistics !== 'undefined') ? users[currentUser.uid].statistics.wins : 0
+  return wins
 }
 
 export default Wins

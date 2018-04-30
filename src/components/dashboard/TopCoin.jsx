@@ -14,9 +14,13 @@ class TopCoin extends Component {
   }
 
   componentDidMount () {
-    db.onceGetUsers().then(snapshot =>
-      this.setState(() => ({ users: snapshot.val() }))
-    )
+    try {
+      db.onceGetUsers().then(snapshot =>
+        this.setState(() => ({ users: snapshot.val() }))
+      )
+    } catch (error) {
+      console.log('there was an error')
+    }
     firebase.auth.onAuthStateChanged(authUser => {
       authUser
         ? this.setState(() => ({ currentUser: authUser }))

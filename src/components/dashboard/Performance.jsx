@@ -14,15 +14,20 @@ class Performance extends Component {
   }
 
   componentDidMount () {
+    var localUsers = null
     db.onceGetUsers().then(snapshot =>
       this.setState(() => ({ users: snapshot.val() }))
     )
+
+    db.onceGetUsers().then(snapshot => { localUsers = snapshot.val })
 
     firebase.auth.onAuthStateChanged(authUser => {
       authUser
         ? this.setState(() => ({ currentUser: authUser }))
         : this.setState(() => ({ currentUser: null }))
     })
+
+    // console.log(calculatePerformance(this.state.users[this.state.currentUser.uid].portfolio))
   }
 
   render () {
