@@ -18,21 +18,25 @@ const paragraphStyle = {
   marginRight: '35%'
 }
 
-const signUpStyle = {
+const buttonStyle = {
   borderWidth: '2px',
   backgroundColor: 'transparent',
   fontWeight: '400',
   opacity: 0.8,
   borderColor: '#888888',
-  color: '#888888',
-  marginLeft: '50%',
-  marginRight: '50%'
+  color: '#888888'
+}
+
+const signUpStyle = {
+  margin: 'auto',
+  width: '50%',
+  textAlign: 'center'
 }
 
 const LandingPage = () =>
   <Grid fluid>
     <Row>
-      <Col lg={12} sm={25}>
+      <Col lg={12} sm={22}>
         <h1 style={headerStyle}>
     Welcome to Fantasy Coin (Beta)
         </h1>
@@ -58,13 +62,25 @@ const PlayButtonHandler = () =>
   </AuthUserContext.Consumer>
 
 const PlayAuth = () =>
-  <Button style={signUpStyle}>
-    <Link to='/dashboard'>Play Now</Link>
-  </Button>
+  <Grid fluid>
+    <Row style={signUpStyle}>
+      <Col lg={12} sm={22}>
+        <Button style={buttonStyle}>
+          <Link to='/dashboard'>Play Now</Link>
+        </Button>
+      </Col>
+    </Row>
+  </Grid>
 
 const PlayNonAuth = () =>
-  <Button style={signUpStyle}>
-    <Link to='/signup'>Play Now</Link>
-  </Button>
+  <Grid fluid>
+    <Row style={signUpStyle}>
+      <Col lg={12} sm={22}>
+        <Button style={buttonStyle}>
+          <Link to='/signup'>Play Now</Link>
+        </Button>
+      </Col>
+    </Row>
+  </Grid>
 
 export default LandingPage
