@@ -82,7 +82,7 @@ const calculateTopUsers = (users) => {
   }
 
   userPerformance.sort(function (a, b) {
-    return a.performance - b.performance
+    return b.performance - a.performance
   })
 
   return userPerformance
