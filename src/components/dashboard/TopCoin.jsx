@@ -47,8 +47,8 @@ const calculateTopCoin = (portfolio) => {
   var topCoin = 'N/A'
   var prevTopCoinChange = -99999999999999999
   for (var coin in portfolio) {
-    topCoin = (portfolio[coin].percent_change_24h > prevTopCoinChange) ? portfolio[coin] : topCoin
-    prevTopCoinChange = (portfolio[coin].percent_change_24h > prevTopCoinChange) ? portfolio[coin].percent_change_24h : prevTopCoinChange
+    topCoin = (parseFloat(portfolio[coin].percent_change_24h) > parseFloat(prevTopCoinChange)) ? portfolio[coin] : topCoin
+    prevTopCoinChange = (parseFloat(portfolio[coin].percent_change_24h) > parseFloat(prevTopCoinChange)) ? parseFloat(portfolio[coin].percent_change_24h) : parseFloat(prevTopCoinChange)
   }
   return topCoin
 }
