@@ -3,7 +3,7 @@ import {StatsCard} from '../../components/StatsCard.jsx'
 
 import { firebase, db } from '../../firebase'
 
-class Performance extends Component {
+class Wallet extends Component {
   constructor (props) {
     super(props)
 
@@ -30,28 +30,18 @@ class Performance extends Component {
 
     return (
       <StatsCard
-        bigIcon={<i className='pe-7s-graph2 text-primary' />}
-        statsText='Performance'
-        statsValue={!!users && <PortfolioPerformance users={users} currentUser={this.state.currentUser} />}
+        bigIcon={<i className='pe-7s-cash text-success' />}
+        statsText='Balance'
+        statsValue={!!users && <WalletTotal users={users} currentUser={this.state.currentUser} />}
         statsIcon={<i className='fa fa-refresh' />}
-        statsIconText='Past 24 Hours'
+        statsIconText='USD'
       />
     )
   }
 }
 
-const calculatePerformance = (portfolio) => {
-  var totalGains = 0
-  var portfolioSize = 0
-  for (var coin in portfolio) {
-    portfolioSize++
-    totalGains += parseFloat(portfolio[coin].percent_change_24h, 10)
-  }
-  return Math.round((totalGains / portfolioSize) * 100) / 100
+const WalletTotal = ({ users, currentUser }) => {
+  return '$' + users[currentUser.uid].statistics.usd
 }
 
-const PortfolioPerformance = ({ users, currentUser }) => {
-  return calculatePerformance(users[currentUser.uid].portfolio) + '%'
-}
-
-export default Performance
+export default Wallet

@@ -89,6 +89,15 @@ class SignUpForm extends Component {
             this.setState(byPropKey('error', error));
           });
 
+        // Initialize wallet with base value
+        db.doInitializeWallet(authUser.uid, 100000)
+        .then(() => {
+          this.setState(() => ({ ...INITIAL_STATE }));
+        })
+        .catch(error => {
+          this.setState(byPropKey('error', error));
+        });
+
         // Initialize statistics for the user
         db.doInitializeStats(authUser.uid, 0, 0, 0)
           .then(() => {

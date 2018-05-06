@@ -21,6 +21,11 @@ export const doInitializePortfolio = (key, id, name, percent_change_1h, percent_
     symbol
   })
 
+export const doInitializeWallet = (key, usd) =>
+  db.ref(`users/${key}/statistics`).set({
+    usd
+  })
+
 export const doInitializeStats = (key, wins, losses, portfolioPerformance) =>
   db.ref(`users/${key}/statistics`).set({
     wins,
