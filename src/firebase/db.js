@@ -91,6 +91,11 @@ export const doSetCoinInPortfolio = (key, coin, id, name, percent_change_1h, per
     symbol
   })
 
+export const doSetAmountInPortfolio = (key, coin, amount) =>
+  db.ref(`users/${key}/portfolio/${coin}`).set({
+    amount
+  })
+
 export const doDeletePortfolio = (key) =>
   db.ref(`users/${key}/portfolio`).remove()
 

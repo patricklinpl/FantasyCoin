@@ -153,7 +153,7 @@ class CoinSelect extends Component {
                 }
               />
               <form onSubmit={this.onSubmit}>
-              <button disabled={isInvalid} type='submit'>Done</button>
+              <button disabled={isInvalid} type='submit'>Next</button>
               </form>
             </Col>
           </Row>

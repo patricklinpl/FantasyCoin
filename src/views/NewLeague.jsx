@@ -3,7 +3,8 @@ import { Grid, Row, Col } from 'react-bootstrap'
 import TeamSelect from '../components/newleague/TeamSelect'
 
 import withAuthorization from '../components/withAuthorization'
-import CoinSelect from '../components/newleague/CoinSelect';
+import CoinSelect from '../components/newleague/CoinSelect'
+import PortfolioManage from '../components/newleague/PortfolioManage'
 
 const NewLeaguePage = ({ history }) =>
   <div>
@@ -41,7 +42,7 @@ class NewLeague extends Component {
         <Grid fluid>
           <Row>
             <Col md={8} mdOffset={2}>
-            <CoinSelect />
+            <PortfolioManage />
             </Col>
           </Row>
         </Grid>
