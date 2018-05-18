@@ -13,15 +13,21 @@ import {
 
 import { firebase, db } from '../../firebase'
 
+const INITIAL_STATE = {
+  coin1: '',
+  users: [],
+  currentUser: ''
+}
+
+const byPropKey = (propertyName, value) => () => ({
+  [propertyName]: value
+})
+
 class PortfolioManage extends Component {
   constructor (props) {
     super(props)
 
-    this.state = {
-      coins: [],
-      users: [],
-      currentUser: null
-    }
+    this.state = { ...INITIAL_STATE }
   }
 
   componentDidMount () {
@@ -37,23 +43,31 @@ class PortfolioManage extends Component {
   }
 
   render () {
-    const { portfolio } = this.state
-    var currentPortfolio = []
+    const {
+      coin1,
+      users,
+      currentUser
+    } = this.state
 
-    var index = 0
-    for (var coin in portfolio) {
-      index++
-      currentPortfolio.push(
-        <FormGroup controlId={'coin' + index} bsSize='large'>
-          <ControlLabel>{coin.name + '(' + coin.symbol + ')'}</ControlLabel>
-          <FormControl
-            autoFocus
-            type='username'
-            value={username}
-            onChange={event => this.setState(byPropKey('username', event.target.value))}
-          />
-        </FormGroup>
-      )
+    // var currentPortfolio = []
+
+    // var index = 0
+    // for (var coin in portfolio) {
+    //   index++
+    //   currentPortfolio.push(
+    //     <FormGroup controlId={'coin' + index} bsSize='large'>
+    //       <ControlLabel>{coin.name + '(' + coin.symbol + ')'}</ControlLabel>
+    //       <FormControl
+    //         autoFocus
+    //         type='username'
+    //         value={coin1}
+    //         onChange={event => this.setState(byPropKey('username', event.target.value))}
+    //       />
+    //     </FormGroup>
+    //   )
+    // }
+    if (users[currentUser.uid].portfolio) {
+      console.log(users[currentUser.uid])
     }
     return (
       <div className='content'>
@@ -67,9 +81,18 @@ class PortfolioManage extends Component {
                 ctTableResponsive ctTableFullWidth ctTableLeague
                 content={
                   <Table>
-                    <tbody>
+                    {/* <tbody>
                       {<tr><td>Unable to load data</td></tr>}
-                    </tbody>
+                    </tbody> */}
+                    <FormGroup controlId={'coin1'} bsSize='large'>
+                      <ControlLabel>{users[currentUser.uid] + ')'}</ControlLabel>
+                      <FormControl
+                        autoFocus
+                        type='coin1'
+                        value={coin1}
+                        onChange={event => this.setState(byPropKey('coin1', event.target.value))}
+                      />
+                    </FormGroup>
                   </Table>
                 }
               />
