@@ -52,25 +52,23 @@ class PortfolioManage extends Component {
       users
     } = this.state
 
-    // if (users[currentUser.uid] === undefined) {
-    // }
-    // var currentPortfolio = []
+    var coins = users[]
 
-    // var index = 0
-    // for (var coin in portfolio) {
-    //   index++
-    //   currentPortfolio.push(
-    //     <FormGroup controlId={'coin' + index} bsSize='large'>
-    //       <ControlLabel>{coin.name + '(' + coin.symbol + ')'}</ControlLabel>
-    //       <FormControl
-    //         autoFocus
-    //         type='username'
-    //         value={coin1}
-    //         onChange={event => this.setState(byPropKey('username', event.target.value))}
-    //       />
-    //     </FormGroup>
-    //   )
-    // }
+    var currentPortfolio = []
+
+    for (var coin in coins) {
+      currentPortfolio.push(
+        <FormGroup controlId={coin} bsSize='large'>
+          <ControlLabel>{!!users && <CoinSymbol users={users} currentUser={this.state.currentUser} coin={coin} />}</ControlLabel>
+          <FormControl
+            autoFocus
+            type='text'
+            value={coin1}
+            onChange={event => this.setState(byPropKey(coin1, event.target.value))}
+          />
+        </FormGroup>
+      )
+    }
     return (
       <div className='content'>
         <Grid fluid>
@@ -81,17 +79,7 @@ class PortfolioManage extends Component {
                 title='Manage your portfolio'
                 category='Please specify the amount of each coin for your portfolio'
                 ctTableResponsive ctTableFullWidth ctTableLeague
-                content={
-                  <FormGroup controlId={'coin1'} bsSize='large'>
-                    <ControlLabel>{!!users && <CoinSymbol users={users} currentUser={this.state.currentUser} />}</ControlLabel>
-                    <FormControl
-                      autoFocus
-                      type='coin1'
-                      value={coin1}
-                      onChange={event => this.setState(byPropKey('coin1', event.target.value))}
-                    />
-                  </FormGroup>
-                }
+                content={currentPortfolio}
               />
               <form onSubmit={this.onSubmit}>
                 <button type='submit'>Done</button>
@@ -104,8 +92,9 @@ class PortfolioManage extends Component {
   }
 }
 
-const CoinSymbol = ({ users, currentUser }) => {
-  return users[currentUser.uid].portfolio['coin1'].symbol
+const CoinSymbol = ({ users, currentUser, coin }) => {
+  console.log(coin)
+  return users[currentUser.uid].portfolio['coin' + coin].symbol
 }
 
 export default PortfolioManage
