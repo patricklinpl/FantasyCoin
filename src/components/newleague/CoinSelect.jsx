@@ -39,7 +39,7 @@ class CoinSelect extends Component {
 
     console.log(finalPortfolio)
     var i = 0
-    var coinAdded = false
+    // var coinAdded = false
     for (var coin in finalPortfolio) {
       //console.log(finalPortfolio[coin])
       var coinName = 'coin' + i

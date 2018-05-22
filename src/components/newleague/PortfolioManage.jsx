@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import {Card} from '../../components/Card.jsx'
 import {
-  Table,
+  // Table,
   Grid,
   Row,
   Col,
-  HelpBlock,
+  // HelpBlock,
   FormGroup,
   FormControl,
   ControlLabel
@@ -15,8 +15,8 @@ import { firebase, db } from '../../firebase'
 
 const INITIAL_STATE = {
   coin1: '',
-  users: [],
-  currentUser: ''
+  users: null,
+  currentUser: null
 }
 
 const byPropKey = (propertyName, value) => () => ({
@@ -31,24 +31,29 @@ class PortfolioManage extends Component {
   }
 
   componentDidMount () {
+    try {
+      db.onceGetUsers().then(snapshot =>
+        this.setState(() => ({ users: snapshot.val() }))
+      )
+    } catch (error) {
+      console.log('there was an error')
+    }
+
     firebase.auth.onAuthStateChanged(authUser => {
       authUser
         ? this.setState(() => ({ currentUser: authUser }))
         : this.setState(() => ({ currentUser: null }))
     })
-
-    db.onceGetUsers().then(snapshot =>
-      this.setState(() => ({ users: snapshot.val() }))
-    )
   }
 
   render () {
     const {
       coin1,
-      users,
-      currentUser
+      users
     } = this.state
 
+    // if (users[currentUser.uid] === undefined) {
+    // }
     // var currentPortfolio = []
 
     // var index = 0
@@ -66,9 +71,6 @@ class PortfolioManage extends Component {
     //     </FormGroup>
     //   )
     // }
-    if (users[currentUser.uid].portfolio) {
-      console.log(users[currentUser.uid])
-    }
     return (
       <div className='content'>
         <Grid fluid>
@@ -80,20 +82,15 @@ class PortfolioManage extends Component {
                 category='Please specify the amount of each coin for your portfolio'
                 ctTableResponsive ctTableFullWidth ctTableLeague
                 content={
-                  <Table>
-                    {/* <tbody>
-                      {<tr><td>Unable to load data</td></tr>}
-                    </tbody> */}
-                    <FormGroup controlId={'coin1'} bsSize='large'>
-                      <ControlLabel>{users[currentUser.uid] + ')'}</ControlLabel>
-                      <FormControl
-                        autoFocus
-                        type='coin1'
-                        value={coin1}
-                        onChange={event => this.setState(byPropKey('coin1', event.target.value))}
-                      />
-                    </FormGroup>
-                  </Table>
+                  <FormGroup controlId={'coin1'} bsSize='large'>
+                    <ControlLabel>{!!users && <CoinSymbol users={users} currentUser={this.state.currentUser} />}</ControlLabel>
+                    <FormControl
+                      autoFocus
+                      type='coin1'
+                      value={coin1}
+                      onChange={event => this.setState(byPropKey('coin1', event.target.value))}
+                    />
+                  </FormGroup>
                 }
               />
               <form onSubmit={this.onSubmit}>
@@ -105,6 +102,10 @@ class PortfolioManage extends Component {
       </div>
     )
   }
+}
+
+const CoinSymbol = ({ users, currentUser }) => {
+  return users[currentUser.uid].portfolio['coin1'].symbol
 }
 
 export default PortfolioManage

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Table, Grid, Row, Col } from 'react-bootstrap'
-import Checkbox from '../../elements/CustomCheckbox/CustomCheckbox.jsx'
+// import { Table, Grid, Row, Col } from 'react-bootstrap'
+// import Checkbox from '../../elements/CustomCheckbox/CustomCheckbox.jsx'
 import Card from '../Card'
 import { firebase, db } from '../../firebase'
 
