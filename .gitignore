@@ -1,4 +1,2 @@
 node_modules
-src/firebase/auth.js
 src/firebase/firebase.js
-src/firebase/index.js
