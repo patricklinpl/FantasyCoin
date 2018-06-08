@@ -8,7 +8,8 @@ import {
   // HelpBlock,
   FormGroup,
   FormControl,
-  ControlLabel
+  ControlLabel,
+  Label
 } from 'react-bootstrap'
 
 import { firebase, db } from '../../firebase'
@@ -28,6 +29,10 @@ class PortfolioManage extends Component {
     super(props)
 
     this.state = { ...INITIAL_STATE }
+  }
+
+  onSubmit = (event) => {
+    
   }
 
   componentDidMount () {
@@ -52,22 +57,23 @@ class PortfolioManage extends Component {
       users
     } = this.state
 
-    var coins = users[]
-
+    var coins = ['coin1', 'coin2']
     var currentPortfolio = []
 
     for (var coin in coins) {
-      currentPortfolio.push(
-        <FormGroup controlId={coin} bsSize='large'>
-          <ControlLabel>{!!users && <CoinSymbol users={users} currentUser={this.state.currentUser} coin={coin} />}</ControlLabel>
-          <FormControl
-            autoFocus
-            type='text'
-            value={coin1}
-            onChange={event => this.setState(byPropKey(coin1, event.target.value))}
-          />
-        </FormGroup>
-      )
+      if (<CoinSymbol users={users} currentUser={this.state.currentUser} coin={coin} /> != null) {
+        currentPortfolio.push(
+          <FormGroup controlId={coin} bsSize='large'>
+            <ControlLabel>{!!users && <CoinSymbol users={users} currentUser={this.state.currentUser} coin={coin} />}</ControlLabel>
+            <FormControl
+              autoFocus
+              type='text'
+              value={coin1}
+              onChange={event => this.setState(byPropKey(coin1, event.target.value))}
+            />
+          </FormGroup>
+        )
+      }
     }
     return (
       <div className='content'>
