@@ -36,6 +36,9 @@ export const doInitializeStats = (key, wins, losses, portfolioPerformance) =>
 export const onceGetUsers = () =>
   db.ref('users').once('value')
 
+export const onceGetBalance = (key) =>
+  db.ref(`users/${key}/statistics/usd`).once('value')
+
 // Other Entity APIs ...
 export const doUpdateCoinData = (key, id, name, symbol, rank, priceUSD, priceBTC, marketCapUSD, availableSupply, totalSupply, maxSupply, percentChange1hr, percentChange24hr, percentChange7d, lastUpdated) =>
   db.ref(`coins/${key}`).set({
@@ -78,7 +81,7 @@ export const onceGetCoin = (index) =>
 export const onceGetCoins = () =>
   db.ref('coins').once('value')
 
-export const doSetCoinInPortfolio = (key, coin, id, name, percent_change_1h, percent_change_24h, percent_change_7d, price_btc, price_usd, rank, symbol) =>
+export const doSetCoinInPortfolio = (key, coin, id, name, percent_change_1h, percent_change_24h, percent_change_7d, price_btc, price_usd, rank, symbol, amount) =>
   db.ref(`users/${key}/portfolio/${coin}`).set({
     id,
     name,
@@ -88,12 +91,18 @@ export const doSetCoinInPortfolio = (key, coin, id, name, percent_change_1h, per
     price_btc,
     price_usd,
     rank,
-    symbol
+    symbol,
+    amount
   })
 
 export const doSetAmountInPortfolio = (key, coin, amount) =>
-  db.ref(`users/${key}/portfolio/${coin}`).set({
-    amount
+  db.ref(`users/${key}/portfolio/${coin}`).update({
+    amount: amount
+  })
+
+export const doDeductBalance = (key, amount) =>
+  db.ref(`users/${key}/statistics`).update({
+    usd: amount
   })
 
 export const doDeletePortfolio = (key) =>

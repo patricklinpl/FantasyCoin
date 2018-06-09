@@ -35,6 +35,7 @@ class CoinSelect extends Component {
       }
     }
 
+
     db.doDeletePortfolio(this.state.currentUser.uid)
 
     console.log(finalPortfolio)
@@ -46,7 +47,7 @@ class CoinSelect extends Component {
       i++
 
       try {
-      db.doSetCoinInPortfolio (this.state.currentUser.uid, coinName, finalPortfolio[coin].id, finalPortfolio[coin].name, finalPortfolio[coin].percentChange1hr, finalPortfolio[coin].percentChange24hr, finalPortfolio[coin].percentChange7d, finalPortfolio[coin].priceBTC, finalPortfolio[coin].priceUSD, finalPortfolio[coin].rank, finalPortfolio[coin].symbol)
+      db.doSetCoinInPortfolio (this.state.currentUser.uid, coinName, finalPortfolio[coin].id, finalPortfolio[coin].name, finalPortfolio[coin].percentChange1hr, finalPortfolio[coin].percentChange24hr, finalPortfolio[coin].percentChange7d, finalPortfolio[coin].priceBTC, finalPortfolio[coin].priceUSD, finalPortfolio[coin].rank, finalPortfolio[coin].symbol, 0)
       } catch (error) {
       console.log('ERROR in CoinSelect: ' + error.message)
       }
