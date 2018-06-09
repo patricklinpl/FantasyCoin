@@ -36,9 +36,6 @@ export const doInitializeStats = (key, wins, losses, portfolioPerformance) =>
 export const onceGetUsers = () =>
   db.ref('users').once('value')
 
-export const onceGetBalance = (key) =>
-  db.ref(`users/${key}/statistics/usd`).once('value')
-
 // Other Entity APIs ...
 export const doUpdateCoinData = (key, id, name, symbol, rank, priceUSD, priceBTC, marketCapUSD, availableSupply, totalSupply, maxSupply, percentChange1hr, percentChange24hr, percentChange7d, lastUpdated) =>
   db.ref(`coins/${key}`).set({

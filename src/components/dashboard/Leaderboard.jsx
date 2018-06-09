@@ -58,7 +58,6 @@ const LeaderboardList = ({ users }) => {
 
   for (var i = 0; i < topUsers.length; i++) {
     if (i === 5) break
-    console.log(topUsers[i].id)
     team.push(
       <tr key={'tr' + i.toString()}>
         <td key={'td1-' + i.toString()}>{users[topUsers[i].id].username}</td>
