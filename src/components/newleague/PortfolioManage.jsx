@@ -98,11 +98,12 @@ class PortfolioManage extends Component {
     var coins = ['coin0', 'coin1', 'coin2', 'coin3', 'coin4']
     var currentPortfolio = []
 
+    // Todo: specify each coin in portfolio and update amounts here using the onChange function
     for (var coin in coins) {
-      if (<CoinSymbol users={users} currentUser={this.state.currentUser} coin={coin} /> != null) {
+      if (<CoinSymbol users={users} currentUser={this.state.currentUser} coin={'coin0'} /> != null) {
         currentPortfolio.push(
           <FormGroup controlId={'coin0'} bsSize='large'>
-            <ControlLabel>{!!users && <CoinSymbol users={users} currentUser={this.state.currentUser} coin={coin} />}</ControlLabel>
+            <ControlLabel>{!!users && <CoinSymbol users={users} currentUser={this.state.currentUser} coin={'coin0'} />}</ControlLabel>
             <FormControl
               autoFocus
               type='text'
@@ -145,9 +146,10 @@ class PortfolioManage extends Component {
 
 // Grab the coin symbol and price for given user and coin index
 // TODO: Might want to move this into a re-usable file/function
+// TODO: change 'coin1' back to coin once finished implementing coin amount
 const CoinSymbol = ({ users, currentUser, coin }) => {
   console.log(coin)
-  return (users[currentUser.uid].portfolio['coin' + coin].symbol + ' ($' + users[currentUser.uid].portfolio['coin' + coin].price_usd + ')')
+  return (users[currentUser.uid].portfolio['coin1'].symbol + ' ($' + users[currentUser.uid].portfolio['coin1'].price_usd + ')')
 }
 
 export default PortfolioManage
