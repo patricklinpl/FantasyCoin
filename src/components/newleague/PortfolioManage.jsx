@@ -9,10 +9,12 @@ import {
   FormGroup,
   FormControl,
   ControlLabel,
-  PageHeader
+  PageHeader,
+  Alert
 } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
 import LoaderButton from '../LoaderButton'
+import * as routes from '../../constants/routes';
 
 import { firebase, db } from '../../firebase'
 
@@ -25,7 +27,8 @@ const INITIAL_STATE = {
   users: null,
   currentUser: null,
   redirectToNewPage: false,
-  error: ''
+  error: '',
+  show: false
 }
 
 const byPropKey = (propertyName, value) => () => ({
@@ -41,6 +44,9 @@ class PortfolioManage extends Component {
   constructor (props) {
     super(props)
 
+    this.handleDismiss = this.handleDismiss.bind(this);
+    this.handleShow = this.handleShow.bind(this);
+
     this.state = { ...INITIAL_STATE }
   }
 
@@ -51,11 +57,17 @@ class PortfolioManage extends Component {
     console.log(this.state.coin0)
     console.log(finalBalance)
 
+    const {
+      history
+    } = this.props;
+
+    if (!((this.state.coin0 + this.state.coin1 + this.state.coin2 + this.state.coin3 + this.state.coin4) > finalBalance)) {
+
       if (this.state.coin0 > finalBalance) {
         this.setState(byPropKey('error', 'You do not have enough balance'))
       } else {
         try {
-          db.doSetAmountInPortfolio (this.state.currentUser.uid, this.state.coin0)
+          db.doSetAmountInPortfolio (this.state.currentUser.uid, 'coin0', this.state.coin0)
           finalBalance -= this.state.coin0
           totalAmount += this.state.coin0
           } catch (error) {
@@ -67,7 +79,7 @@ class PortfolioManage extends Component {
         this.setState(byPropKey('error', 'You do not have enough balance'))
       } else {
         try {
-          db.doSetAmountInPortfolio (this.state.currentUser.uid, this.state.coin1)
+          db.doSetAmountInPortfolio (this.state.currentUser.uid, 'coin1', this.state.coin1)
           finalBalance -= this.state.coin1
           totalAmount += this.state.coin1
           } catch (error) {
@@ -79,7 +91,7 @@ class PortfolioManage extends Component {
         this.setState(byPropKey('error', 'You do not have enough balance'))
       } else {
         try {
-          db.doSetAmountInPortfolio (this.state.currentUser.uid, this.state.coin2)
+          db.doSetAmountInPortfolio (this.state.currentUser.uid, 'coin2', this.state.coin2)
           finalBalance -= this.state.coin2
           totalAmount += this.state.coin2
           } catch (error) {
@@ -91,7 +103,7 @@ class PortfolioManage extends Component {
         this.setState(byPropKey('error', 'You do not have enough balance'))
       } else {
         try {
-          db.doSetAmountInPortfolio (this.state.currentUser.uid, this.state.coin3)
+          db.doSetAmountInPortfolio (this.state.currentUser.uid, 'coin3', this.state.coin3)
           finalBalance -= this.state.coin3
           totalAmount += this.state.coin3
           } catch (error) {
@@ -103,7 +115,7 @@ class PortfolioManage extends Component {
         this.setState(byPropKey('error', 'You do not have enough balance'))
       } else {
         try {
-          db.doSetAmountInPortfolio (this.state.currentUser.uid, this.state.coin4)
+          db.doSetAmountInPortfolio (this.state.currentUser.uid, 'coin4', this.state.coin4)
           finalBalance -= this.state.coin4
           totalAmount += this.state.coin4
           } catch (error) {
@@ -120,6 +132,10 @@ class PortfolioManage extends Component {
         } catch (error) {
           this.setState(byPropKey('error', error))
         }
+      } else {
+        this.handleShow()
+      }
+        event.preventDefault();
   }
 
   componentDidMount () {
@@ -150,6 +166,14 @@ class PortfolioManage extends Component {
     );
   }
 
+  handleDismiss() {
+    this.setState({ show: false });
+  }
+
+  handleShow() {
+    this.setState({ show: true });
+  }
+
   render () {
     const {
       users,
@@ -167,7 +191,6 @@ class PortfolioManage extends Component {
       <Redirect to="/dashboard"/>
       )
     }
-    console.log(balance)
 
     return (
       <Grid fluid style={test}>

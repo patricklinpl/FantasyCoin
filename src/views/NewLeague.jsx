@@ -18,6 +18,7 @@ const byPropKey = (propertyName, value) => () => ({
 
 const INITIAL_STATE = {
   userAdd: '',
+  done: false
 };
 
 class NewLeague extends Component {
@@ -42,7 +43,7 @@ class NewLeague extends Component {
         <Grid fluid>
           <Row>
             <Col md={8} mdOffset={2}>
-            <PortfolioManage />
+            <LeagueCreation done={this.state.done} />
             </Col>
           </Row>
         </Grid>
@@ -50,6 +51,15 @@ class NewLeague extends Component {
     )
   }
 }
+
+const LeagueCreation = ({ done }) => {
+  if (done) {
+    return <PortfolioManage />
+  } else {
+    return <CoinSelect />
+  }
+}
+  
 
 const authCondition = (authUser) => !!authUser
 
