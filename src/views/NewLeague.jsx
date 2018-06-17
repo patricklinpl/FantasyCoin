@@ -26,6 +26,7 @@ class NewLeague extends Component {
     super(props);
 
     this.state = { ...INITIAL_STATE };
+    this.completeCoinSelect = this.completeCoinSelect.bind(this)
   }
 
   onSubmit = (event) => {
@@ -36,27 +37,24 @@ class NewLeague extends Component {
     event.preventDefault();
   }
 
-  render () {
+  completeCoinSelect() {
+    this.setState({
+      done: true
+    })
+  }
 
+  render () {
     return (
       <div className='content'>
         <Grid fluid>
           <Row>
             <Col md={8} mdOffset={2}>
-            <LeagueCreation done={this.state.done} />
+            {this.state.done ? <PortfolioManage /> : <CoinSelect action={this.completeCoinSelect} />}
             </Col>
           </Row>
         </Grid>
       </div>
     )
-  }
-}
-
-const LeagueCreation = ({ done }) => {
-  if (done) {
-    return <PortfolioManage />
-  } else {
-    return <CoinSelect />
   }
 }
   

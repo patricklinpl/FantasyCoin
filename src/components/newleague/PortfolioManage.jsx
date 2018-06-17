@@ -123,12 +123,13 @@ class PortfolioManage extends Component {
           }
       }
 
+              // Redirect back to dashboard after balance has been deducted
+              this.setState({
+                redirectToNewPage: true
+              })
+              
       try {
         db.doDeductBalance (this.state.currentUser.uid, finalBalance)
-        // Redirect back to dashboard after balance has been deducted
-        this.setState({
-          redirectToNewPage: true
-        })
         } catch (error) {
           this.setState(byPropKey('error', error))
         }

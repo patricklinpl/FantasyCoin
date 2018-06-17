@@ -50,10 +50,12 @@ class CoinSelect extends Component {
         console.log('ERROR in CoinSelect: ' + error.message)
         }
       }
+
+      // re-directs to the portfolio manage page
       
-      this.setState({
-        redirectToNewPage: true
-      })
+      // this.setState({
+      //   redirectToNewPage: true
+      // })
     }
   }
 
@@ -113,6 +115,10 @@ class CoinSelect extends Component {
     )
   }
 
+  completeCoinSelect() {
+    this.props.finishCoinSelect()
+  }
+
   render () {
     const { coins } = this.state
 
@@ -161,7 +167,7 @@ class CoinSelect extends Component {
                 }
               />
               <form onSubmit={this.onSubmit}>
-              <button disabled={isInvalid} type='submit'>Next</button>
+              <button disabled={isInvalid} type='submit' onClick={this.props.action}>Next</button>
               </form>
             </Col>
           </Row>
