@@ -4,6 +4,7 @@ import { Grid, Row, Col } from 'react-bootstrap'
 
 import TopCoin from 'components/dashboard/TopCoin.jsx'
 import Performance from 'components/dashboard/Performance.jsx'
+import Wallet from 'components/dashboard/Wallet.jsx'
 import Wins from 'components/dashboard/Wins.jsx'
 import Leaderboard from 'components/dashboard/Leaderboard.jsx'
 import PerformanceChart from 'components/dashboard/PerformanceChart.jsx'
@@ -26,13 +27,16 @@ class Dashboard extends Component {
       <div className='content'>
         <Grid fluid>
           <Row>
-            <Col lg={4} sm={8}>
+            <Col lg={3} sm={6}>
+              <Wallet />
+            </Col>
+            <Col lg={3} sm={6}>
               <TopCoin />
             </Col>
-            <Col lg={4} sm={8}>
+            <Col lg={3} sm={6}>
               <Performance />
             </Col>
-            <Col lg={4} sm={8}>
+            <Col lg={3} sm={6}>
               <Wins />
             </Col>
           </Row>

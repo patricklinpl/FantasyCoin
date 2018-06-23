@@ -21,6 +21,11 @@ export const doInitializePortfolio = (key, id, name, percent_change_1h, percent_
     symbol
   })
 
+export const doInitializeWallet = (key, usd) =>
+  db.ref(`users/${key}/statistics`).set({
+    usd
+  })
+
 export const doInitializeStats = (key, wins, losses, portfolioPerformance) =>
   db.ref(`users/${key}/statistics`).set({
     wins,
@@ -73,7 +78,7 @@ export const onceGetCoin = (index) =>
 export const onceGetCoins = () =>
   db.ref('coins').once('value')
 
-export const doSetCoinInPortfolio = (key, coin, id, name, percent_change_1h, percent_change_24h, percent_change_7d, price_btc, price_usd, rank, symbol) =>
+export const doSetCoinInPortfolio = (key, coin, id, name, percent_change_1h, percent_change_24h, percent_change_7d, price_btc, price_usd, rank, symbol, amount) =>
   db.ref(`users/${key}/portfolio/${coin}`).set({
     id,
     name,
@@ -83,7 +88,18 @@ export const doSetCoinInPortfolio = (key, coin, id, name, percent_change_1h, per
     price_btc,
     price_usd,
     rank,
-    symbol
+    symbol,
+    amount
+  })
+
+export const doSetAmountInPortfolio = (key, coin, amount) =>
+  db.ref(`users/${key}/portfolio/${coin}`).update({
+    amount: amount
+  })
+
+export const doDeductBalance = (key, amount) =>
+  db.ref(`users/${key}/statistics`).update({
+    usd: amount
   })
 
 export const doDeletePortfolio = (key) =>

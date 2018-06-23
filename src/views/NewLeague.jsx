@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
-import TeamSelect from '../components/newleague/TeamSelect'
+// import TeamSelect from '../components/newleague/TeamSelect'
 
 import withAuthorization from '../components/withAuthorization'
-import CoinSelect from '../components/newleague/CoinSelect';
+import CoinSelect from '../components/newleague/CoinSelect'
+import PortfolioManage from '../components/newleague/PortfolioManage'
 
 const NewLeaguePage = ({ history }) =>
   <div>
@@ -17,6 +18,7 @@ const byPropKey = (propertyName, value) => () => ({
 
 const INITIAL_STATE = {
   userAdd: '',
+  done: false
 };
 
 class NewLeague extends Component {
@@ -24,6 +26,7 @@ class NewLeague extends Component {
     super(props);
 
     this.state = { ...INITIAL_STATE };
+    this.completeCoinSelect = this.completeCoinSelect.bind(this)
   }
 
   onSubmit = (event) => {
@@ -34,14 +37,19 @@ class NewLeague extends Component {
     event.preventDefault();
   }
 
-  render () {
+  completeCoinSelect() {
+    this.setState({
+      done: true
+    })
+  }
 
+  render () {
     return (
       <div className='content'>
         <Grid fluid>
           <Row>
             <Col md={8} mdOffset={2}>
-            <CoinSelect />
+            {this.state.done ? <PortfolioManage /> : <CoinSelect action={this.completeCoinSelect} />}
             </Col>
           </Row>
         </Grid>
@@ -49,6 +57,7 @@ class NewLeague extends Component {
     )
   }
 }
+  
 
 const authCondition = (authUser) => !!authUser
 
