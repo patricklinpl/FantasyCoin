@@ -52,77 +52,28 @@ class PortfolioManage extends Component {
 
   onSubmit = (event) => {
     var finalBalance = this.state.users[this.state.currentUser.uid].statistics.usd
-    var totalAmount = 0
     var total = parseInt(this.state.coin0) + parseInt(this.state.coin1) + parseInt(this.state.coin2) + parseInt(this.state.coin3) + parseInt(this.state.coin4)
-    var coins = [this.state.coin0, this.state.coin1, this.state.coin2, this.state.coin3, this.state.coin4]
-    console.log(total)
-    console.log(finalBalance)
+    var coins = {"coin0": this.state.coin0, "coin1": this.state.coin1, "coin2": this.state.coin2, "coin3": this.state.coin3, "coin4": this.state.coin4}
 
     const {
       history
     } = this.props;
 
+    // Setup portfolio and update db
     if (!(total > finalBalance)) {
-      console.log("submitting final portfolio")
-      if (this.state.coin0 > finalBalance) {
-        this.setState(byPropKey('error', 'You do not have enough balance'))
-      } else {
-        try {
-          db.doSetAmountInPortfolio (this.state.currentUser.uid, 'coin0', this.state.coin0)
-          finalBalance -= this.state.coin0
-          totalAmount += this.state.coin0
-          } catch (error) {
-            this.setState(byPropKey('error', error))
-          }
+      for (var coin in coins) {
+        if (coins[coin] > finalBalance) {
+          this.setState(byPropKey('error', 'You do not have enough balance'))
+        } else {
+          try {
+            db.doSetAmountInPortfolio (this.state.currentUser.uid, coin, coins[coin])
+            finalBalance -= coins[coin]
+            } catch (error) {
+              this.setState(byPropKey('error', error))
+            }
+        }
       }
 
-      if (this.state.coin1 > finalBalance) {
-        this.setState(byPropKey('error', 'You do not have enough balance'))
-      } else {
-        try {
-          db.doSetAmountInPortfolio (this.state.currentUser.uid, 'coin1', this.state.coin1)
-          finalBalance -= this.state.coin1
-          totalAmount += this.state.coin1
-          } catch (error) {
-            this.setState(byPropKey('error', error))
-          }
-      }
-
-      if (this.state.coin2 > finalBalance) {
-        this.setState(byPropKey('error', 'You do not have enough balance'))
-      } else {
-        try {
-          db.doSetAmountInPortfolio (this.state.currentUser.uid, 'coin2', this.state.coin2)
-          finalBalance -= this.state.coin2
-          totalAmount += this.state.coin2
-          } catch (error) {
-            this.setState(byPropKey('error', error))
-          }
-      }
-
-      if (this.state.coin3 > finalBalance) {
-        this.setState(byPropKey('error', 'You do not have enough balance'))
-      } else {
-        try {
-          db.doSetAmountInPortfolio (this.state.currentUser.uid, 'coin3', this.state.coin3)
-          finalBalance -= this.state.coin3
-          totalAmount += this.state.coin3
-          } catch (error) {
-            this.setState(byPropKey('error', error))
-          }
-      }
-
-      if (this.state.coin4 > finalBalance) {
-        this.setState(byPropKey('error', 'You do not have enough balance'))
-      } else {
-        try {
-          db.doSetAmountInPortfolio (this.state.currentUser.uid, 'coin4', this.state.coin4)
-          finalBalance -= this.state.coin4
-          totalAmount += this.state.coin4
-          } catch (error) {
-            this.setState(byPropKey('error', error))
-          }
-      }
       // Redirect back to dashboard after balance has been deducted
       this.setState({
         redirectToNewPage: true
@@ -134,6 +85,7 @@ class PortfolioManage extends Component {
           this.setState(byPropKey('error', error))
         }
       } else {
+        // Show not enough balance error if the user doesn't have enough balance 
         this.handleShow()
       }
   }
@@ -177,7 +129,6 @@ class PortfolioManage extends Component {
   render () {
     const {
       users,
-      balance,
       coin0,
       coin1,
       coin2,
@@ -185,7 +136,7 @@ class PortfolioManage extends Component {
       coin4,
       error
     } = this.state
-
+    
     if (this.state.redirectToNewPage) {
       return (
       <Redirect to="/dashboard"/>
@@ -259,8 +210,6 @@ class PortfolioManage extends Component {
 }
 
 // Grab the coin symbol and price for given user and coin index
-// TODO: Might want to move this into a re-usable file/function
-// TODO: change 'coin1' back to coin once finished implementing coin amount
 const CoinSymbol = ({ users, currentUser, coin }) => {
   return (users[currentUser.uid].portfolio[coin].symbol + ' ($' + users[currentUser.uid].portfolio[coin].price_usd + ')')
 }

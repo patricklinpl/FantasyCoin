@@ -50,13 +50,6 @@ class CoinSelect extends Component {
         console.log('ERROR in CoinSelect: ' + error.message)
         }
       }
-
-      // re-directs to the portfolio manage page
-      
-      // this.setState({
-      //   redirectToNewPage: true
-      // })
-    // }
   }
 
   handleInputChange (event) {
