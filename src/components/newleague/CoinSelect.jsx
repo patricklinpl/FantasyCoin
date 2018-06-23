@@ -35,7 +35,7 @@ class CoinSelect extends Component {
       }
     }
 
-    if (finalPortfolio.length == 5) {
+    // if (finalPortfolio.length == 5) {
       db.doDeletePortfolio(this.state.currentUser.uid)
       var i = 0
       // var coinAdded = false
@@ -43,9 +43,9 @@ class CoinSelect extends Component {
         //console.log(finalPortfolio[coin])
         var coinName = 'coin' + i
         i++
-
         try {
         db.doSetCoinInPortfolio (this.state.currentUser.uid, coinName, finalPortfolio[coin].id, finalPortfolio[coin].name, finalPortfolio[coin].percentChange1hr, finalPortfolio[coin].percentChange24hr, finalPortfolio[coin].percentChange7d, finalPortfolio[coin].priceBTC, finalPortfolio[coin].priceUSD, finalPortfolio[coin].rank, finalPortfolio[coin].symbol, 0)
+        this.props.action()
         } catch (error) {
         console.log('ERROR in CoinSelect: ' + error.message)
         }
@@ -56,7 +56,7 @@ class CoinSelect extends Component {
       // this.setState({
       //   redirectToNewPage: true
       // })
-    }
+    // }
   }
 
   handleInputChange (event) {
@@ -88,7 +88,7 @@ class CoinSelect extends Component {
       }
     }
     
-    if (finalPortfolio.length != 5 || (statePortfolio.every(element => element === 'empty'))) {
+    if (finalPortfolio.length !== 5 || (statePortfolio.every(element => element === 'empty'))) {
       this.setState({
         invalid: true
       })
@@ -167,7 +167,7 @@ class CoinSelect extends Component {
                 }
               />
               <form onSubmit={this.onSubmit}>
-              <button disabled={isInvalid} type='submit' onClick={this.props.action}>Next</button>
+              <button disabled={isInvalid} type='submit'>Next</button>
               </form>
             </Col>
           </Row>

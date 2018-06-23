@@ -53,16 +53,17 @@ class PortfolioManage extends Component {
   onSubmit = (event) => {
     var finalBalance = this.state.users[this.state.currentUser.uid].statistics.usd
     var totalAmount = 0
+    var total = parseInt(this.state.coin0) + parseInt(this.state.coin1) + parseInt(this.state.coin2) + parseInt(this.state.coin3) + parseInt(this.state.coin4)
     var coins = [this.state.coin0, this.state.coin1, this.state.coin2, this.state.coin3, this.state.coin4]
-    console.log(this.state.coin0)
+    console.log(total)
     console.log(finalBalance)
 
     const {
       history
     } = this.props;
 
-    if (!((this.state.coin0 + this.state.coin1 + this.state.coin2 + this.state.coin3 + this.state.coin4) > finalBalance)) {
-
+    if (!(total > finalBalance)) {
+      console.log("submitting final portfolio")
       if (this.state.coin0 > finalBalance) {
         this.setState(byPropKey('error', 'You do not have enough balance'))
       } else {
@@ -122,11 +123,10 @@ class PortfolioManage extends Component {
             this.setState(byPropKey('error', error))
           }
       }
-
-              // Redirect back to dashboard after balance has been deducted
-              this.setState({
-                redirectToNewPage: true
-              })
+      // Redirect back to dashboard after balance has been deducted
+      this.setState({
+        redirectToNewPage: true
+      })
               
       try {
         db.doDeductBalance (this.state.currentUser.uid, finalBalance)
@@ -136,7 +136,6 @@ class PortfolioManage extends Component {
       } else {
         this.handleShow()
       }
-        event.preventDefault();
   }
 
   componentDidMount () {
