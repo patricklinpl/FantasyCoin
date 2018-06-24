@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import {Card} from '../../components/Card.jsx'
+import { Card } from '../../components/Card.jsx'
 import { Table, Grid, Row, Col } from 'react-bootstrap'
-import { Redirect } from 'react-router-dom';
+import { TOTAL_COINS } from 'variables/NewLeagueVariables.jsx'
 
 import { firebase, db } from '../../firebase'
 
@@ -22,9 +22,11 @@ class CoinSelect extends Component {
       redirectToNewPage: false
     }
 
+    // Calls handleInputChange after a checkbox is checked or unchecked
     this.handleInputChange = this.handleInputChange.bind(this)
   }
 
+  
   onSubmit = (event) => {
     var finalPortfolio = []
 
@@ -35,23 +37,33 @@ class CoinSelect extends Component {
       }
     }
 
-    // if (finalPortfolio.length == 5) {
+    if (finalPortfolio.length == TOTAL_COINS) {
+      // Deletes the old portfolio saved in db
       db.doDeletePortfolio(this.state.currentUser.uid)
       var i = 0
-      // var coinAdded = false
       for (var coin in finalPortfolio) {
-        //console.log(finalPortfolio[coin])
         var coinName = 'coin' + i
         i++
         try {
-        db.doSetCoinInPortfolio (this.state.currentUser.uid, coinName, finalPortfolio[coin].id, finalPortfolio[coin].name, finalPortfolio[coin].percentChange1hr, finalPortfolio[coin].percentChange24hr, finalPortfolio[coin].percentChange7d, finalPortfolio[coin].priceBTC, finalPortfolio[coin].priceUSD, finalPortfolio[coin].rank, finalPortfolio[coin].symbol, 0)
-        this.props.action()
+          // Set the selected coin in the db
+          db.doSetCoinInPortfolio (this.state.currentUser.uid, coinName, finalPortfolio[coin].id, finalPortfolio[coin].name, finalPortfolio[coin].percentChange1hr, finalPortfolio[coin].percentChange24hr, finalPortfolio[coin].percentChange7d, finalPortfolio[coin].priceBTC, finalPortfolio[coin].priceUSD, finalPortfolio[coin].rank, finalPortfolio[coin].symbol, 0)
         } catch (error) {
-        console.log('ERROR in CoinSelect: ' + error.message)
+          console.log('ERROR in CoinSelect: ' + error.message)
         }
       }
+      // Updates the state of parent component to trigger a render for the PortfolioManage component 
+      this.props.nextStep()
+    }
   }
 
+/**
+* Handler for extracting data from selected coins and checks if coin selections are valid.
+* In this context, valid means the user selected 5 coins. This validity check may change
+* once this app contains additional leagues/features and portfolio selection
+*
+* @param {event} - event data containing checkbox state change
+*
+*/
   handleInputChange (event) {
     const target = event.target
     const value = target.type === 'checkbox' ? target.checked : target.value
@@ -72,16 +84,16 @@ class CoinSelect extends Component {
       statePortfolio.splice(coinIndex - 1, 1)
     }
 
+    // Push all coins to finalPortfolio removing all empty values
     var finalPortfolio = []
-
-    // Push all coins to an array removing all empty values
     for (var coin in statePortfolio) {
       if (coin) {
         finalPortfolio.push(statePortfolio[coin])
       }
     }
     
-    if (finalPortfolio.length !== 5 || (statePortfolio.every(element => element === 'empty'))) {
+    // The value of TOTAL_COINS coins must be selected in order to continue to the next step 
+    if (finalPortfolio.length !== TOTAL_COINS || (statePortfolio.every(element => element === 'empty'))) {
       this.setState({
         invalid: true
       })
@@ -116,8 +128,9 @@ class CoinSelect extends Component {
   }
 
   render () {
-    const { coins } = this.state
+    const { coins, invalid } = this.state
 
+    // Formats a table of coins pushed into an array
     var allCoins = []
     var index = 0
     for (var coin in coins) {
@@ -133,14 +146,6 @@ class CoinSelect extends Component {
               onChange={this.handleInputChange} />
           </td>
         </tr>
-      )
-    }
-
-    const isInvalid = this.state.invalid
-
-    if (this.state.redirectToNewPage) {
-      return (
-      <Redirect to="/dashboard"/>
       )
     }
 
@@ -163,7 +168,7 @@ class CoinSelect extends Component {
                 }
               />
               <form onSubmit={this.onSubmit}>
-              <button disabled={isInvalid} type='submit'>Next</button>
+              <button disabled={invalid} type='submit'>Next</button>
               </form>
             </Col>
           </Row>
