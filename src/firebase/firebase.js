@@ -18,9 +18,13 @@ const devConfig = {
   messagingSenderId: '930678974720'
 }
 
-const config = () => (
-  process.env.NODE_ENV === 'production' ? prodConfig : devConfig
-)
+let config = devConfig
+
+if (process.env.NODE_ENV === 'production') {
+  config = prodConfig
+}
+
+console.log(process.env.NODE_ENV)
 
 if (!firebase.apps.length) {
   firebase.initializeApp(config)
