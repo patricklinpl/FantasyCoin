@@ -13,6 +13,9 @@ class Wallet extends Component {
     }
   }
 
+  /**
+   * Fetch firebase db snapshot of all users and authenticated user
+   */
   componentDidMount () {
     db.onceGetUsers().then(snapshot =>
       this.setState(() => ({ users: snapshot.val() }))

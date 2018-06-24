@@ -13,6 +13,9 @@ class TopCoin extends Component {
     }
   }
 
+  /**
+   * Fetch firebase db snapshot of all users and authenticated user
+   */
   componentDidMount () {
     try {
       db.onceGetUsers().then(snapshot =>

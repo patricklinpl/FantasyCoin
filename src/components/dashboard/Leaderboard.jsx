@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Card} from '../../components/Card.jsx'
 import {Table} from 'react-bootstrap'
+import { MAX_TOP_USERS} from 'variables/DashboardVariables.jsx'
 
 import { firebase, db } from '../../firebase'
 
@@ -30,7 +31,6 @@ class Leaderboard extends Component {
 
   render () {
     const { users } = this.state
-
     return (
       <Card
         hCenter
@@ -55,12 +55,17 @@ class Leaderboard extends Component {
   }
 }
 
+/**
+* Component which renders all the top performing useres
+*
+* @param {JSON} users
+*/
 const LeaderboardList = ({ users }) => {
   var topUsers = calculateTopUsers(users)
   var team = []
 
   for (var i = 0; i < topUsers.length; i++) {
-    if (i === 5) break
+    if (i === MAX_TOP_USERS) break
     team.push(
       <tr key={'tr' + i.toString()}>
         <td key={'td1-' + i.toString()}>{users[topUsers[i].id].username}</td>
@@ -73,6 +78,11 @@ const LeaderboardList = ({ users }) => {
   return team
 }
 
+/**
+* Helper function for LeaderBoardList which calculates the top performing users
+*
+* @param {JSON} users
+*/
 const calculateTopUsers = (users) => {
   var userPerformance = []
 
@@ -90,6 +100,11 @@ const calculateTopUsers = (users) => {
   return userPerformance
 }
 
+/**
+* Helper function for calculateTopUsers which calculates the performance of a specific user
+*
+* @param {JSON} users
+*/
 const calculatePerformance = (portfolio) => {
   var totalGains = 0
   var portfolioSize = 0
