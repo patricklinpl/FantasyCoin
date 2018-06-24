@@ -1,6 +1,7 @@
 import * as firebase from 'firebase'
 
 const prodConfig = {
+  apiKey: "AIzaSyBLcwOXcl8bS2FaJk-Ee2yGFwdImE54rss",
   authDomain: "fantasycoin-prod.firebaseapp.com",
   databaseURL: "https://fantasycoin-prod.firebaseio.com",
   projectId: "fantasycoin-prod",
