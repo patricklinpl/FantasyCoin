@@ -90,6 +90,9 @@ class PortfolioManage extends Component {
       }
   }
 
+  /**
+   * Fetch firebase db snapshots and authenticated user
+   */
   componentDidMount () {
     // Get all users
     try {

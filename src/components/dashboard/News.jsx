@@ -16,7 +16,10 @@ export class News extends Component {
       news: []
     }
   }
-  // Import data
+
+  /**
+   * Fetch news data from API
+   */
   componentDidMount () {
     axios.get('https://newsapi.org/v2/top-headlines?sources=crypto-coins-news&apiKey=5c922eb873824ce1a0c6e3e1f83f3dad')
       .then(res => {

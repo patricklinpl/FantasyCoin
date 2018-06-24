@@ -92,6 +92,9 @@ class CoinSelect extends Component {
     }
   }
 
+/**
+ * Fetch firebase db snapshots and authenticated user
+ */
   componentDidMount () {
     firebase.auth.onAuthStateChanged(authUser => {
       authUser

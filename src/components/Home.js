@@ -12,6 +12,9 @@ class HomePage extends Component {
     }
   }
 
+  /**
+   * Fetch firebase db snapshot of all users
+   */
   componentDidMount () {
     db.onceGetUsers().then(snapshot =>
       this.setState(() => ({ users: snapshot.val() }))

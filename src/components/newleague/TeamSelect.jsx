@@ -27,6 +27,9 @@ class NewLeague extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
+  /**
+   * Fetch firebase db snapshots and authenticated user
+   */
   componentDidMount () {
     db.onceGetUsers().then(snapshot =>
       this.setState(() => ({ users: snapshot.val() }))
