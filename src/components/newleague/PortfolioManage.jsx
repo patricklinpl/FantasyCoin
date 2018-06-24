@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-import {Card} from '../../components/Card.jsx'
 import {
-  // Table,
   Grid,
   Row,
   Col,
-  // HelpBlock,
   FormGroup,
   FormControl,
   ControlLabel,
@@ -14,7 +11,7 @@ import {
 } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
 import LoaderButton from '../LoaderButton'
-import * as routes from '../../constants/routes';
+import { gridStyle } from 'variables/NewLeagueVariables.jsx'
 
 import { firebase, db } from '../../firebase'
 
@@ -34,11 +31,6 @@ const INITIAL_STATE = {
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value
 })
-
-var test = {
-  margin: 'auto',
-  width: '40%',
-}
 
 class PortfolioManage extends Component {
   constructor (props) {
@@ -60,7 +52,7 @@ class PortfolioManage extends Component {
     } = this.props;
 
     // Setup portfolio and update db
-    if (!(total > finalBalance)) {
+    if (!(total > finalBalance) && this.isValidForm()) {
       for (var coin in coins) {
         if (coins[coin] > finalBalance) {
           this.setState(byPropKey('error', 'You do not have enough balance'))
@@ -90,6 +82,9 @@ class PortfolioManage extends Component {
       }
   }
 
+  /**
+   * Fetch firebase db snapshots and authenticated user
+   */
   componentDidMount () {
     // Get all users
     try {
@@ -108,20 +103,40 @@ class PortfolioManage extends Component {
     })
   }
 
-  validateForm() {
+  /**
+  * Helper function for validate form that checks if the value passed into coin textbox is numeric
+  *
+  * @param {String} coin
+  *
+  * @return {boolean} - true if meets criteria
+  */
+  isValidFormat(coin) {
+      return (/^\d+$/.test(coin) && coin.length > 0)
+  }
+
+  /**
+  * Helper function for validate form that checks if the value passed into coin textbox is numeric
+  *
+  * @param {String} coin
+  *
+  * @return {boolean} - true if meets criteria
+  */
+  isValidForm() {
     return (
-      this.state.coin0.length > 0 &&
-      this.state.coin1.length > 0 &&
-      this.state.coin2.length > 0 &&
-      this.state.coin3.length > 0 &&
-      this.state.coin4.length > 0
+      this.isValidFormat(this.state.coin0) &&
+      this.isValidFormat(this.state.coin1) &&
+      this.isValidFormat(this.state.coin2) &&
+      this.isValidFormat(this.state.coin3) &&
+      this.isValidFormat(this.state.coin4)
     );
   }
 
+  // Dismiss error message if valid coin amount
   handleDismiss() {
     this.setState({ show: false });
   }
 
+  // Show error message if invalid coin amount
   handleShow() {
     this.setState({ show: true });
   }
@@ -144,7 +159,7 @@ class PortfolioManage extends Component {
     }
 
     return (
-      <Grid fluid style={test}>
+      <Grid fluid style={gridStyle}>
       <Row>
         <Col>
         <PageHeader><small>Balance: ${!!users && <Balance users={users} currentUser={this.state.currentUser} />}</small></PageHeader>
@@ -194,7 +209,7 @@ class PortfolioManage extends Component {
             <LoaderButton
               block
               bsSize="large"
-              disabled={!this.validateForm()}
+              disabled={!this.isValidForm()}
               type="submit"
               isLoading={this.state.isLoading}
               text="Done"
@@ -209,11 +224,27 @@ class PortfolioManage extends Component {
   }
 }
 
-// Grab the coin symbol and price for given user and coin index
+/**
+* Return a given coin that exist in a portfolio in this format: 'BTC ($100)'
+*
+* @param {JSON} users
+* @param {JSON} currentUser
+* @param {String} coin
+*
+* @return {String} data - ticker and price of coin
+*/
 const CoinSymbol = ({ users, currentUser, coin }) => {
   return (users[currentUser.uid].portfolio[coin].symbol + ' ($' + users[currentUser.uid].portfolio[coin].price_usd + ')')
 }
 
+/**
+* Return a given coin that exist in a portfolio in this format: 'BTC ($100)'
+*
+* @param {JSON} users
+* @param {JSON} currentUser
+*
+* @return {number} data - the balance left in your wallet
+*/
 const Balance = ({ users, currentUser }) => {
   return (users[currentUser.uid].statistics.usd)
 }

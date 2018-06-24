@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { SignUpLink } from '../views/SignUp';
-import { PasswordForgetLink } from './PasswordForget';
+import { PasswordForgetLink } from '../views/PasswordForget';
 import { updateCoinData } from '../utility/CoinMarketCapAPI'
 import { auth } from '../firebase';
 import {
-  HelpBlock,
   FormGroup,
   FormControl,
   ControlLabel
@@ -14,11 +13,12 @@ import {
 import "../components/styles/Signup.css"
 import LoaderButton from '../components/LoaderButton'
 import { Grid, Row, Col } from 'react-bootstrap'
+import { gridStyle } from '../variables/CoreVariables.jsx'
 
 import * as routes from '../constants/routes';
 
 const SignInPage = ({ history }) =>
-  <Grid fluid style={test}>
+  <Grid fluid style={gridStyle}>
     <Row>
       <Col>
         <div>
@@ -41,11 +41,6 @@ const INITIAL_STATE = {
   password: '',
   error: null,
 };
-
-var test = {
-  margin: 'auto',
-  width: '15%',
-}
 
 class SignInForm extends Component {
   constructor(props) {
@@ -80,7 +75,12 @@ class SignInForm extends Component {
     event.preventDefault();
   }
 
-  validateForm() {
+  /**
+  * Validates whether or not values were entered into the text fields
+  *
+  * @return {boolean} - true if meets criteria
+  */
+  isValidForm() {
     return (
       this.state.email.length > 0 &&
       this.state.password.length > 0
@@ -93,10 +93,6 @@ class SignInForm extends Component {
       password,
       error,
     } = this.state;
-
-    const isInvalid =
-      password === '' ||
-      email === '';
 
     return (
       <Grid fluid>
@@ -123,7 +119,7 @@ class SignInForm extends Component {
               <LoaderButton
                 block
                 bsSize="large"
-                disabled={!this.validateForm()}
+                disabled={!this.isValidForm()}
                 type="submit"
                 isLoading={this.state.isLoading}
                 text="Sign In"

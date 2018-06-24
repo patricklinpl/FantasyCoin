@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
-// import TeamSelect from '../components/newleague/TeamSelect'
 
 import withAuthorization from '../components/withAuthorization'
 import CoinSelect from '../components/newleague/CoinSelect'
@@ -49,7 +48,7 @@ class NewLeague extends Component {
         <Grid fluid>
           <Row>
             <Col md={8} mdOffset={2}>
-            {this.state.done ? <PortfolioManage /> : <CoinSelect action={this.completeCoinSelect} />}
+            {this.state.done ? <PortfolioManage /> : <CoinSelect nextStep={this.completeCoinSelect} />}
             </Col>
           </Row>
         </Grid>

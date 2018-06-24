@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import withAuthorization from './withAuthorization'
+import withAuthorization from '../components/withAuthorization'
 import { db } from '../firebase'
 
 class HomePage extends Component {
@@ -12,6 +12,9 @@ class HomePage extends Component {
     }
   }
 
+  /**
+   * Fetch firebase db snapshot of all users
+   */
   componentDidMount () {
     db.onceGetUsers().then(snapshot =>
       this.setState(() => ({ users: snapshot.val() }))
