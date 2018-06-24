@@ -17,6 +17,7 @@ import NewLeague from '../views/NewLeague'
 import * as routes from '../constants/routes'
 
 import withAuthentication from './withAuthentication'
+require('dotenv').config()
 
 const App = () =>
   <Router>

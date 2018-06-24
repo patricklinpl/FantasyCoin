@@ -1,4 +1,5 @@
 import * as firebase from 'firebase'
+require('dotenv').config()
 
 const prodConfig = {
   apiKey: 'AIzaSyBLcwOXcl8bS2FaJk-Ee2yGFwdImE54rss',
@@ -18,13 +19,13 @@ const devConfig = {
   messagingSenderId: '930678974720'
 }
 
-let config = devConfig
+let config = prodConfig
 
-if (process.env.NODE_ENV === 'production') {
-  config = prodConfig
+if (process.env.NODE_ENV === 'development') {
+  config = devConfig
 }
 
-console.log(process.env.NODE_ENV)
+console.log(process.env.ENVIRONMENT)
 
 if (!firebase.apps.length) {
   firebase.initializeApp(config)
