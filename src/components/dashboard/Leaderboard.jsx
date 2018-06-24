@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import {Card} from '../../components/Card.jsx'
-import {Table} from 'react-bootstrap'
-import { MAX_TOP_USERS} from 'variables/DashboardVariables.jsx'
+import { Card } from '../../components/Card.jsx'
+import { Table } from 'react-bootstrap'
+import { MAX_TOP_USERS } from 'variables/DashboardVariables.jsx'
 
 import { firebase, db } from '../../firebase'
 
@@ -56,7 +56,7 @@ class Leaderboard extends Component {
 }
 
 /**
-* Component which renders all the top performing useres
+* Component which renders all the top performing users
 *
 * @param {JSON} users
 */
@@ -82,6 +82,8 @@ const LeaderboardList = ({ users }) => {
 * Helper function for LeaderBoardList which calculates the top performing users
 *
 * @param {JSON} users
+*
+* @return {Array} list - of top performing users
 */
 const calculateTopUsers = (users) => {
   var userPerformance = []
@@ -101,9 +103,11 @@ const calculateTopUsers = (users) => {
 }
 
 /**
-* Helper function for calculateTopUsers which calculates the performance of a specific user
+* Helper function for calculateTopUsers(..) which calculates the performance of a specific user
 *
 * @param {JSON} users
+
+* @return {number} data - performance of given portfolio in percent
 */
 const calculatePerformance = (portfolio) => {
   var totalGains = 0

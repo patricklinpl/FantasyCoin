@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {StatsCard} from '../../components/StatsCard.jsx'
+import { StatsCard } from '../../components/StatsCard.jsx'
 
 import { firebase, db } from '../../firebase'
 
@@ -29,7 +29,6 @@ class Wins extends Component {
 
   render () {
     const { users } = this.state
-
     return (
       <StatsCard
         bigIcon={<i className='pe-7s-medal text-success' />}
@@ -42,6 +41,14 @@ class Wins extends Component {
   }
 }
 
+/**
+* Returns the 24hr percent change of the top coin in your portfolio
+*
+* @param {JSON} users
+* @param {JSON} currentUser
+*
+* @return {number} data - total number of fantasy league fins
+*/
 const TotalWins = ({ users, currentUser }) => {
   var wins = (typeof users[currentUser.uid].statistics !== 'undefined') ? users[currentUser.uid].statistics.wins : 0
   return wins

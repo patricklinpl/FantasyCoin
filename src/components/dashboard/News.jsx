@@ -32,7 +32,7 @@ export class News extends Component {
     var i = 0
     var news = []
     for (var newsObj in this.state.news) {
-      // Limit the amount of news articles to MAX_NEWS_ARTICLES
+      // Limit the amount of news articles displayed to MAX_NEWS_ARTICLES
       if (i === MAX_NEWS_ARTICLES) break
       i++
       news.push(

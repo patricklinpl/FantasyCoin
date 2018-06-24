@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Card} from '../../components/Card.jsx'
+import { Card } from '../../components/Card.jsx'
 import ChartistGraph from 'react-chartist'
 import {
   dataPie,

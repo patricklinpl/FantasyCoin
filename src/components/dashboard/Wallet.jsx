@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {StatsCard} from '../../components/StatsCard.jsx'
+import { StatsCard } from '../../components/StatsCard.jsx'
 
 import { firebase, db } from '../../firebase'
 
@@ -43,6 +43,14 @@ class Wallet extends Component {
   }
 }
 
+/**
+* Returns the 24hr percent change of the top coin in your portfolio
+*
+* @param {JSON} users
+* @param {JSON} currentUser
+*
+* @return {String} data - dollar amount of USD holdings in your account
+*/
 const WalletTotal = ({ users, currentUser }) => {
   return '$' + users[currentUser.uid].statistics.usd
 }

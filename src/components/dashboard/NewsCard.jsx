@@ -1,22 +1,9 @@
 import React, { Component } from 'react'
-import {Card} from '../../components/Card.jsx'
-import {News} from './News.jsx'
-
-var cardStyle = {
-  display: 'block',
-  width: '80vw',
-  transitionDuration: '0.3s',
-  height: '45vw'
-}
+import { Card } from '../../components/Card.jsx'
+import { News } from './News.jsx'
+import { newsCardStyle } from 'variables/DashboardVariables.jsx'
 
 class NewsCard extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-    }
-  }
-
   render () {
     return (
       <Card
@@ -24,7 +11,7 @@ class NewsCard extends Component {
         category='Your Daily Crypto Currency News'
         stats='Updated 3 minutes ago'
         statsIcon='fa fa-history'
-        style={cardStyle}
+        style={newsCardStyle}
         content={
           <div className='table-full-width'>
             <table className='table'>
