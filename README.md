@@ -16,6 +16,7 @@ node-pre-gyp ERR! Tried to download(undefined): https://fsevents-binaries.s3-us-
 node-pre-gyp ERR! Pre-built binaries not found for fsevents@1.1.3 and node@10.6.0 (node-v64 ABI, unknown) (falling back to source compile with node-gyp) 
 ```
 Run the following command:
-    $ npm install -g node-gyp
-
+```
+$ npm install -g node-gyp
+```
 
