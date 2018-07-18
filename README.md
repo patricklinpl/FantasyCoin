@@ -20,3 +20,11 @@ Run the following command:
 $ npm install -g node-gyp
 ```
 
+If you're still having some issues, try using this version of node and npm:
+```
+$ node -v
+v8.9.1
+$ npm -v
+5.6.0
+```
+run npm install after switching versions
