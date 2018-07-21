@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Button from 'elements/CustomButton/CustomButton.jsx'
+import Button from '../elements/CustomButton/CustomButton.jsx'
 import { Grid, Row, Col } from 'react-bootstrap'
 import AuthUserContext from '../components/AuthUserContext'
 
