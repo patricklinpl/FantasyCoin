@@ -6,6 +6,40 @@
     $ cd ~/Github/FantasyCoin
     $ npm install
     $ npm start
+ 
+## Notes on creating a new scraper and adding to DB
+### Step 1 Create the Item
+- In items.py you will want to create a new class item with your requested fields you wish to scrape
+### Step 2 Create the spider
+- Create the spider in mlb_scraper/spiders
+### Step 3 Create the model
+- In models.py you will want to make a function to create the table like so:
+```
+def create_table_name_table(engine):
+    """"""
+    DeclarativeBase.metadata.create_all(engine)
+```
+- Then you will want to create a new model that contains the same fields as your item that you previously created (Import any needed Data types before using) ie:
+```
+class ModelName(DeclarativeBase):
+    """Sqlalchemy model name model"""
+    __tablename__ = "table_name"
+    
+    primary_key_column = Column(Integer, primary_key=True)
+    other_column = Column('atBats', Integer, nullable=True)
+```
+### Step 4 Configure the pipeline
+- In pipelines.py under __init__(self) you will want to call the create table function you made
+```
+create_table_name(engine)
+```
+- In process_item(..) you will want to perform the insertion to the table by checking if the current item is the instance you want
+```
+        if isinstance(item, ItemNameItem):
+            table = ModelName(**item)
+```
+- Finally, import the name of the Model, create table function, and Item at the top
+
 
 ## Troubleshooting
 Getting errors related to node-gyp? ie:
