@@ -4,7 +4,7 @@ import ChartistGraph from 'react-chartist'
 import {
   dataPie,
   legendPie
-} from 'variables/Variables.jsx'
+} from '../../variables/Variables.jsx'
 
 class PerformanceChart extends Component {
   constructor (props) {

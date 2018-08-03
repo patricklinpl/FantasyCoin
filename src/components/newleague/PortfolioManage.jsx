@@ -11,7 +11,7 @@ import {
 } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
 import LoaderButton from '../LoaderButton'
-import { gridStyle } from 'variables/NewLeagueVariables.jsx'
+import { gridStyle } from '../../variables/NewLeagueVariables.jsx'
 
 import { firebase, db } from '../../firebase'
 

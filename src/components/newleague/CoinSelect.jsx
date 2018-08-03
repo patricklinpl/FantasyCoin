@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card } from '../../components/Card.jsx'
 import { Table, Grid, Row, Col } from 'react-bootstrap'
-import { TOTAL_COINS } from 'variables/NewLeagueVariables.jsx'
+import { TOTAL_COINS } from '../../variables/NewLeagueVariables.jsx'
 
 import { firebase, db } from '../../firebase'
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StatsCard } from '../../components/StatsCard.jsx'
-import { DEFAULT_NEGATIVE_PERCENT } from 'variables/DashboardVariables.jsx'
+import { DEFAULT_NEGATIVE_PERCENT } from '../../variables/DashboardVariables.jsx'
 
 import { firebase, db } from '../../firebase'
 

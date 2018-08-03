@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Thumbnail } from 'react-bootstrap'
 import axios from 'axios'
 
-import { newsText, MAX_NEWS_ARTICLES } from 'variables/DashboardVariables.jsx'
+import { newsText, MAX_NEWS_ARTICLES } from '../../variables/DashboardVariables.jsx'
 
 export class News extends Component {
   constructor (props) {

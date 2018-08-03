@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card } from '../../components/Card.jsx'
 import { Table } from 'react-bootstrap'
-import { MAX_TOP_USERS } from 'variables/DashboardVariables.jsx'
+import { MAX_TOP_USERS } from '../../variables/DashboardVariables.jsx'
 
 import { firebase, db } from '../../firebase'
 

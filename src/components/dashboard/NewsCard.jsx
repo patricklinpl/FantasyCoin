@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card } from '../../components/Card.jsx'
 import { News } from './News.jsx'
-import { newsCardStyle } from 'variables/DashboardVariables.jsx'
+import { newsCardStyle } from '../../variables/DashboardVariables.jsx'
 
 class NewsCard extends Component {
   render () {
